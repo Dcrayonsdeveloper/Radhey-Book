@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Block admin and authentication
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /password/
+
+# Block storage and Laravel internals
+Disallow: /storage/framework/
+Disallow: /storage/logs/
+Disallow: /vendor/
+
+# Block search/filter URLs and tracking parameters
+Disallow: /*?utm_*
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?s=
+Disallow: /search
+
+# Sitemap
+Sitemap: https://radheybook.com/sitemap.xml
