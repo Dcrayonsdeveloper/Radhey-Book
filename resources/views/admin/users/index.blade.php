@@ -19,14 +19,19 @@
                 </tr>
             </thead>
             <tbody>
+                @php $masterEmail = config('auth.master_admin.email'); @endphp
                 @forelse($users as $user)
+                @php $isMaster = $masterEmail && strtolower($user->email) === strtolower($masterEmail); @endphp
                 <tr>
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->name }} @if($isMaster) <span class="badge badge-gold">Master</span> @endif</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->format('M d, Y') }}</td>
                     <td>
                         <div style="display: flex; gap: 8px;">
+                            @if($isMaster)
+                            <span style="color:#888;font-size:13px;">Locked</span>
+                            @else
                             <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-outline">Edit</a>
                             @if($user->id !== auth()->id())
                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Delete this user?')">
@@ -35,6 +40,7 @@
                             </form>
                             @else
                             <span class="badge badge-gold">You</span>
+                            @endif
                             @endif
                         </div>
                     </td>

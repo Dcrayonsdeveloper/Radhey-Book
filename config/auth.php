@@ -20,6 +20,13 @@ return [
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
+    // Hardcoded-from-env master admin. Cannot be edited or deleted from the
+    // admin panel. Active only when both env vars are set.
+    'master_admin' => [
+        'email' => env('MASTER_ADMIN_EMAIL'),
+        'password' => env('MASTER_ADMIN_PASSWORD'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

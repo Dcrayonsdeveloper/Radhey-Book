@@ -41,11 +41,20 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        if ($this->isMaster($user)) {
+            return redirect()->route('admin.users.index')
+                ->with('error', 'The master admin account cannot be edited.');
+        }
         return view('admin.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
+        if ($this->isMaster($user)) {
+            return redirect()->route('admin.users.index')
+                ->with('error', 'The master admin account cannot be edited.');
+        }
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
@@ -66,11 +75,21 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($this->isMaster($user)) {
+            return back()->with('error', 'The master admin account cannot be deleted.');
+        }
+
         if ($user->id === auth()->id()) {
             return back()->with('error', 'You cannot delete your own account.');
         }
 
         $user->delete();
         return redirect()->route('admin.users.index')->with('success', 'User deleted.');
+    }
+
+    private function isMaster(User $user): bool
+    {
+        $email = config('auth.master_admin.email');
+        return $email && strtolower($user->email) === strtolower($email);
     }
 }
