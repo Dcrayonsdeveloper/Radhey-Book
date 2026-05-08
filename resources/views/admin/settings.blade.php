@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label>WhatsApp Number</label>
                     <input type="text" name="whatsapp_number" class="form-control" value="{{ $settings['whatsapp_number'] }}">
-                    <span class="form-hint">Format: 919876543210 (country code + number, no +)</span>
+                    <span class="form-hint">Format: 917901712857 (country code + number, no +)</span>
                 </div>
 
                 <div class="form-group">

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Menu;
 use App\Models\SiteSetting;
+use App\Support\Keywords;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Reset per-request keyword auto-link tracking so static state never
+        // leaks between requests under long-running runtimes (Octane/Swoole).
+        Keywords::resetRequestState();
+
         // Force every generated URL to use HTTPS in production. Stops accidental
         // mixed-content loads and ensures secure cookies are honoured.
         if ($this->app->environment('production')) {

@@ -32,7 +32,7 @@
                 <div class="blog-cta-box">
                     <h3>Ready to Start Betting?</h3>
                     <p>Get your Radhey Betting ID now with {{ $siteSettings['welcome_bonus'] ?? '100' }}% welcome bonus!</p>
-                    <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold" target="_blank" rel="noopener">Get Your ID on WhatsApp</a>
+                    <a href="https://linktr.ee/radheybook" class="btn btn-gold" target="_blank" rel="noopener">Get Your ID on WhatsApp</a>
                 </div>
             </article>
 
@@ -40,7 +40,7 @@
                 <div class="sidebar-widget">
                     <h3>Get Your Betting ID</h3>
                     <p>Instant activation via WhatsApp. {{ $siteSettings['welcome_bonus'] ?? '100' }}% welcome bonus on first deposit!</p>
-                    <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-block" target="_blank" rel="noopener">Get ID Now</a>
+                    <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-block" target="_blank" rel="noopener">Get ID Now</a>
                 </div>
 
                 <div class="sidebar-widget">

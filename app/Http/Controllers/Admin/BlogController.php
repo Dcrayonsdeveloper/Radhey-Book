@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Mews\Purifier\Facades\Purifier;
 
 class BlogController extends Controller
 {
@@ -35,6 +36,9 @@ class BlogController extends Controller
             'canonical_url' => 'nullable|url|max:500',
             'image' => 'nullable|max:255',
         ]);
+
+        $validated['content'] = Purifier::clean($validated['content'] ?? '', 'page-content');
+        $validated['excerpt'] = Purifier::clean($validated['excerpt'] ?? '', 'page-content');
 
         $validated['noindex'] = $request->boolean('noindex');
         $validated['slug'] = Str::slug($validated['title']);
@@ -75,6 +79,9 @@ class BlogController extends Controller
             'canonical_url' => 'nullable|url|max:500',
             'image' => 'nullable|max:255',
         ]);
+
+        $validated['content'] = Purifier::clean($validated['content'] ?? '', 'page-content');
+        $validated['excerpt'] = Purifier::clean($validated['excerpt'] ?? '', 'page-content');
 
         $validated['noindex'] = $request->boolean('noindex');
 

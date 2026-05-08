@@ -152,7 +152,7 @@
             </div>
             <div class="text-center" style="margin-top: 30px;">
                 <p>{!! $page->section('exclusion_cta_text', 'To request self-exclusion, contact us on WhatsApp or email and we will process your request immediately.') !!}</p>
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20to%20request%20self-exclusion" class="btn btn-gold btn-lg" target="_blank" rel="noopener" style="margin-top: 15px;">{!! $page->section('exclusion_btn_text', 'Request Self-Exclusion') !!}</a>
+                <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener" style="margin-top: 15px;">{!! $page->section('exclusion_btn_text', 'Request Self-Exclusion') !!}</a>
             </div>
         </div>
     </div>
@@ -207,13 +207,13 @@
             <p class="section-subtitle">{!! $page->section('cta_text', 'If you need assistance with responsible gaming, self-exclusion, or any concerns, our team is here to help 24/7.') !!}</p>
         </div>
         <div class="text-center">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20need%20help%20with%20responsible%20gaming" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.476-.682-6.297-1.848l-.44-.292-3.065 1.027 1.027-3.065-.292-.44A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                 {!! $page->section('hero_btn_text', 'Contact Support on WhatsApp') !!}
             </a>
         </div>
         <div class="text-center" style="margin-top: 15px;">
-            <p style="opacity: 0.7;">{!! $page->section('cta_contact_info', 'Email: <a href="mailto:support@radheybettingid.com" class="text-gold">support@radheybettingid.com</a> | Phone: <a href="tel:+919876543210" class="text-gold">+91 98765 43210</a>') !!}</p>
+            <p style="opacity: 0.7;">{!! $page->section('cta_contact_info', 'Email: <a href="mailto:support@radheybettingid.com" class="text-gold">support@radheybettingid.com</a> | Phone: <a href="tel:+917901712857" class="text-gold">+91 79017 12857</a>') !!}</p>
         </div>
     </div>
 </section>

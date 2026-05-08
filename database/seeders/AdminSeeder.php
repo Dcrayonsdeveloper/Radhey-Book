@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
 
         $defaults = [
             'site_name' => 'Radhey Book',
-            'whatsapp_number' => '919876543210',
+            'whatsapp_number' => '917901712857',
             'support_email' => 'support@radheybook.com',
             'meta_title' => "Radhey Book | India's #1 Trusted Online Betting ID Provider",
             'meta_description' => 'Get your online betting ID instantly from Radhey Book - India\'s most trusted betting ID provider.',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Mews\Purifier\Facades\Purifier;
 
 class PageController extends Controller
 {
@@ -17,8 +18,28 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         $sectionDefinitions = $this->getSectionDefinitions($page->slug);
-        $sectionDefaults    = $this->getSectionDefaults($page->slug);
-        return view('admin.pages.edit', compact('page', 'sectionDefinitions', 'sectionDefaults'));
+        // Hardcoded defaults take precedence; fall back to defaults extracted
+        // directly from the blade template so every textarea shows the actual
+        // text the public site renders, even for auto-discovered pages.
+        $hardcodedDefaults = $this->getSectionDefaults($page->slug);
+        $bladeDefaults     = $this->extractBladeDefaults($page->slug);
+        $sectionDefaults   = array_merge($bladeDefaults, $hardcodedDefaults);
+
+        $linkPages = Page::where('is_active', true)
+            ->orderBy('title')
+            ->get(['slug', 'title'])
+            ->map(fn ($p) => ['url' => '/' . ltrim($p->slug, '/'), 'label' => $p->title ?: $p->slug])
+            ->values();
+
+        $linkPosts = \App\Models\BlogPost::published()
+            ->orderBy('title')
+            ->get(['slug', 'title'])
+            ->map(fn ($p) => ['url' => '/blog/' . $p->slug, 'label' => $p->title])
+            ->values();
+
+        return view('admin.pages.edit', compact(
+            'page', 'sectionDefinitions', 'sectionDefaults', 'linkPages', 'linkPosts'
+        ));
     }
 
     public function update(Request $request, Page $page)
@@ -38,11 +59,39 @@ class PageController extends Controller
             'sections' => 'nullable|array',
         ]);
 
+        // Per-section validation rules derived from field definitions so each
+        // textarea/text/html/toggle has a sensible max length.
+        $definitions = $this->getSectionDefinitions($page->slug);
+        $sectionRules = [];
+        foreach ($definitions as $key => $def) {
+            $sectionRules["sections.$key"] = match ($def['type'] ?? 'text') {
+                'toggle'   => 'nullable|in:0,1',
+                'text'     => 'nullable|string|max:5000',
+                'textarea' => 'nullable|string|max:20000',
+                'html'     => 'nullable|string|max:100000',
+                default    => 'nullable|string|max:20000',
+            };
+        }
+        if (!empty($sectionRules)) {
+            $request->validate($sectionRules);
+        }
+
         // Merge submitted sections into existing — only keep non-empty values
         // so that empty fields don't overwrite previously saved content.
         // Toggle fields ("0") must pass through since "0" is valid and non-empty.
-        $incoming = $validated['sections'] ?? [];
+        $incoming = $request->input('sections', []);
         $incoming = array_filter($incoming, fn($v) => $v !== '' && $v !== null);
+
+        // HTML sanitization — strips <script>, on*= handlers, javascript:
+        // URLs, iframes, embeds. Toggles bypass (they're plain "0"/"1").
+        foreach ($incoming as $key => $value) {
+            $type = $definitions[$key]['type'] ?? 'text';
+            if ($type === 'toggle' || !is_string($value)) {
+                continue;
+            }
+            $incoming[$key] = Purifier::clean($value, 'page-content');
+        }
+
         $sections = array_merge($page->sections ?? [], $incoming);
 
         $page->update([
@@ -186,7 +235,7 @@ class PageController extends Controller
                 'freeze_btn_text'       => 'Freeze Account',
                 'care_title'            => '24/7 Customer Care',
                 'care_text'             => 'Our dedicated support team is available 24 hours a day, 7 days a week, 365 days a year. Reach us anytime via WhatsApp.',
-                'care_phone'            => '+91 98765 43210',
+                'care_phone'            => '+91 79017 12857',
                 'care_email'            => 'support@radheybook.com',
                 'care_support_btn_text' => 'Contact Support',
                 // Comparison Table
@@ -305,7 +354,7 @@ class PageController extends Controller
                 'faq_1_q'  => 'What is Radhey Book?',
                 'faq_1_a'  => 'Radhey Book is India\'s leading online betting ID provider. We provide verified betting IDs for cricket, casino, tennis, football, and more. Our IDs give you access to top exchange platforms with competitive odds and instant withdrawals.',
                 'faq_2_q'  => 'How can I get a Betting ID from Radhey?',
-                'faq_2_a'  => 'Getting a betting ID from Radhey is simple! Just contact us on WhatsApp at +91 98765 43210, share your name and preferred platform, and we\'ll create your verified betting ID within minutes. It\'s that easy!',
+                'faq_2_a'  => 'Getting a betting ID from Radhey is simple! Just contact us on WhatsApp at +91 79017 12857, share your name and preferred platform, and we\'ll create your verified betting ID within minutes. It\'s that easy!',
                 'faq_3_q'  => 'Is Radhey Book safe and trusted?',
                 'faq_3_a'  => 'Absolutely! Radhey Book has been serving over 2 million players for 7+ years. We use encrypted transactions, provide instant withdrawals, and offer 24/7 customer support. Your safety is our top priority.',
                 'faq_4_q'  => 'What sports can I bet on?',
@@ -331,9 +380,9 @@ class PageController extends Controller
                 'faq_14_q' => 'What payment methods are accepted?',
                 'faq_14_a' => 'We accept all major payment methods including UPI, Google Pay, Paytm, PhonePe, and direct bank transfers. All transactions are 100% secure and encrypted.',
                 'faq_15_q' => 'How do I contact customer support?',
-                'faq_15_a' => 'You can reach our 24/7 customer support team via WhatsApp at +91 98765 43210 or email at support@radheybook.com. We respond to all queries within minutes.',
+                'faq_15_a' => 'You can reach our 24/7 customer support team via WhatsApp at +91 79017 12857 or email at support@radheybook.com. We respond to all queries within minutes.',
                 // WhatsApp
-                'whatsapp_number' => '919876543210',
+                'whatsapp_number' => '917901712857',
             ],
         ];
 
@@ -669,12 +718,18 @@ class PageController extends Controller
             ],
         ];
 
+        // Always run blade auto-discovery so the admin form shows EVERY field
+        // the page actually uses, not just a hand-curated subset. Hardcoded
+        // definitions (when present) take precedence — they have nicer labels
+        // and the right field-type/grouping. Any field used by the blade but
+        // missing from the hardcoded list is appended via auto-discovery.
+        $discovered = $this->discoverSectionDefinitions($slug);
+
         if (isset($definitions[$slug])) {
-            return $definitions[$slug];
+            return array_merge($discovered, $definitions[$slug]);
         }
 
-        // Auto-discover section keys from the blade template
-        return $this->discoverSectionDefinitions($slug);
+        return $discovered;
     }
 
     /**
@@ -683,20 +738,14 @@ class PageController extends Controller
      */
     private function discoverSectionDefinitions(string $slug): array
     {
-        // Map slugs to blade view filenames
+        // Map slugs to blade view filenames. Most slugs map 1:1 to a blade
+        // of the same name (so no entry needed). Only list the EXCEPTIONS.
         $viewMap = [
-            'cricket-betting-id' => 'cricket',
-            'tennis-betting-id'  => 'tennis',
-            'football-betting-id' => 'football',
-            'privacy-policy'     => 'privacy',
+            'privacy-policy'       => 'privacy',
             'terms-and-conditions' => 'terms',
-            'responsible-gaming' => 'responsible-gaming',
-            'fairplay-369'       => 'fairplay',
-            'reddy-anna'         => 'reddy-anna',
-            'mahadev-book'       => 'mahadev-book',
-            'lord-exchange'      => 'lord-exchange',
-            'lotus-exchange'     => 'lotus-exchange',
-            'sky-exchange'       => 'sky-exchange',
+            'fairplay-369'         => 'fairplay',
+            'tennis-betting-id'    => 'tennis',
+            'football-betting-id'  => 'football',
         ];
 
         $viewFile = $viewMap[$slug] ?? $slug;
@@ -708,8 +757,8 @@ class PageController extends Controller
 
         $content = file_get_contents($path);
 
-        // Match all $page->section('key_name' patterns
-        preg_match_all('/\$page->section\(\s*\'([^\']+)\'/', $content, $matches);
+        // Match all $page->section('key', ... ) and $page->raw('key', ... ) calls
+        preg_match_all('/\$page->(?:section|raw)\(\s*\'([^\']+)\'/', $content, $matches);
 
         if (empty($matches[1])) {
             return [];
@@ -750,6 +799,70 @@ class PageController extends Controller
         }
 
         return $definitions;
+    }
+
+    /**
+     * Cache of blade-extracted defaults keyed by slug to avoid re-parsing
+     * the same template multiple times within a single request.
+     *
+     * @var array<string,array<string,string>>
+     */
+    private array $bladeDefaultsCache = [];
+
+    /**
+     * Parse a page's blade template and extract the second argument of every
+     * $page->section('key', 'default') and $page->raw('key', 'default') call.
+     * Returns a [key => default] map so the admin form can pre-fill textareas
+     * with the actual content the public site renders, even when the slug has
+     * no entry in getSectionDefaults().
+     */
+    private function extractBladeDefaults(string $slug): array
+    {
+        if (isset($this->bladeDefaultsCache[$slug])) {
+            return $this->bladeDefaultsCache[$slug];
+        }
+
+        // Same view-file mapping as discoverSectionDefinitions().
+        // Most slugs map 1:1 to a blade of the same name; only list exceptions.
+        $viewMap = [
+            'privacy-policy'       => 'privacy',
+            'terms-and-conditions' => 'terms',
+            'fairplay-369'         => 'fairplay',
+            'tennis-betting-id'    => 'tennis',
+            'football-betting-id'  => 'football',
+        ];
+
+        $viewFile = $viewMap[$slug] ?? $slug;
+        $path     = resource_path("views/pages/{$viewFile}.blade.php");
+
+        if (!file_exists($path)) {
+            return $this->bladeDefaultsCache[$slug] = [];
+        }
+
+        $content = file_get_contents($path);
+
+        // Match $page->section('key', 'default') OR $page->raw('key', 'default').
+        // Default value is captured as a single-quoted PHP string, allowing
+        // \' and \\ escape sequences inside.
+        $pattern = <<<'REGEX'
+~\$page->(?:section|raw)\(\s*'([^']+)'\s*,\s*'((?:[^'\\]|\\.)*)'~s
+REGEX;
+
+        preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
+        $defaults = [];
+        foreach ($matches as $m) {
+            $key = $m[1];
+            // Unescape single-quoted PHP string: \' → ', \\ → \
+            $default = preg_replace('/\\\\(.)/', '$1', $m[2]);
+            // First match wins so we keep the canonical default if a key is
+            // referenced in multiple places.
+            if (!isset($defaults[$key])) {
+                $defaults[$key] = $default;
+            }
+        }
+
+        return $this->bladeDefaultsCache[$slug] = $defaults;
     }
 
     /**

@@ -20,7 +20,7 @@
                     <h2 class="hero-title">{!! $page->section('hero_slide_2_title', 'Get Your <span class="text-gold">IPL Betting ID</span> & Win Big!') !!}</h2>
                     <p class="hero-subtitle">{!! $page->section('hero_slide_2_subtitle', 'Live IPL odds, session betting, fancy markets & more. Welcome Bonus on first deposit.') !!}</p>
                     <div class="hero-cta">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_2_btn1_text', 'Get IPL Betting ID')) }}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_2_btn1_text', 'Get IPL Betting ID')) }}</a>
                         <a href="{!! $page->section('hero_slide_2_btn2_link', '/cricket-betting-id') !!}" class="btn btn-outline-gold btn-lg">{{ strip_tags($page->section('hero_slide_2_btn2_text', 'Cricket Markets')) }}</a>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <h2 class="hero-title">{!! $page->section('hero_slide_1_title', 'India\'s No.1 Trusted <span class="text-gold">IPL Betting ID</span> Provider') !!}</h2>
                     <p class="hero-subtitle">{!! $page->section('hero_slide_1_subtitle', 'Radhey Book connects you directly with verified IPL betting ID agents and exchanges. 100% Trust • 24/7 WhatsApp Support • Fast Withdrawals.') !!}</p>
                     <div class="hero-cta">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_1_btn1_text', 'Get Your FREE Betting ID Now')) }}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_1_btn1_text', 'Get Your FREE Betting ID Now')) }}</a>
                         <a href="{!! $page->section('hero_slide_1_btn2_link', '#how-it-works') !!}" class="btn btn-outline-gold btn-lg">{{ strip_tags($page->section('hero_slide_1_btn2_text', 'How It Works')) }}</a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <h2 class="hero-title">{!! $page->section('hero_slide_3_title', 'Play <span class="text-gold">Live Casino Games</span> & Win Real Money') !!}</h2>
                     <p class="hero-subtitle">{!! $page->section('hero_slide_3_subtitle', 'Teen Patti, Roulette, Blackjack, Aviator & more. Instant deposits, fast withdrawals within 5 minutes.') !!}</p>
                     <div class="hero-cta">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Casino%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_3_btn1_text', 'Get Casino ID Now')) }}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_3_btn1_text', 'Get Casino ID Now')) }}</a>
                         <a href="{!! $page->section('hero_slide_3_btn2_link', '/casino') !!}" class="btn btn-outline-gold btn-lg">{{ strip_tags($page->section('hero_slide_3_btn2_text', 'Casino Games')) }}</a>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                         <span>Fast Withdrawal</span>
                     </div>
                     <div class="mt-4">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('intro_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('intro_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@
                     <p>{!! $page->section('what_is_p2', 'It works across IPL, T20s, international matches and Test cricket and keeps your data safe. A reliable online cricket betting ID simplifies the whole process and makes it well-structured and secure.') !!}</p>
                     <p>{!! $page->section('what_is_p3', 'Whether you are a cricket enthusiast looking for a trusted and reliable online cricket ID or someone who enjoys casino games, getting your ID is the very first step to secure betting in India.') !!}</p>
                     <div class="mt-4">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
                     </div>
                 </div>
             </div>
@@ -450,7 +450,7 @@
             })();
         </script>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_need_btn_text', 'Get Your IPL Betting ID Now') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_need_btn_text', 'Get Your IPL Betting ID Now') !!}</a>
         </div>
     </div>
 </section>
@@ -470,7 +470,7 @@
                         <h2 class="trust-cta-title">{!! $page->section('trust_cta_title', 'Are You Looking For A Secure and Trusted <span class="text-gold">IPL Betting ID Provider</span>?') !!}</h2>
                         <p>{!! $page->section('trust_cta_p1', 'Radhey Book is India\'s most trusted IPL Betting ID Provider and delivers 100% secure and verified online cricket IDs via quick WhatsApp setup, secure access, and fast UPI withdrawals. You can bet on IPL 2026, the T20 World Cup, and international matches with ease and comfort.') !!}</p>
                         <p>{!! $page->section('trust_cta_p2', 'With over 200,000 active users, authentic accounts, immediate activation with no delays, and verified user reviews, we are a trustworthy option when it comes to an online betting ID.') !!}</p>
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Trusted%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('trust_cta_btn_text', 'Get Your Trusted IPL Betting ID Now') !!}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('trust_cta_btn_text', 'Get Your Trusted IPL Betting ID Now') !!}</a>
                     </div>
                 </div>
             </div>
@@ -637,7 +637,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('get_id_btn_text', 'Get Your ID Now') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('get_id_btn_text', 'Get Your ID Now') !!}</a>
         </div>
     </div>
 </section>
@@ -668,7 +668,7 @@
                         <span class="timer-label">Seconds</span>
                     </div>
                 </div>
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20to%20claim%20the%20Welcome%20Bonus" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('bonus_btn_text', 'Claim Your Bonus Now') !!}</a>
+                <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('bonus_btn_text', 'Claim Your Bonus Now') !!}</a>
             </div>
         </div>
     </div>
@@ -728,7 +728,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_choose_btn_text', 'Get Your IPL Betting ID Now & Start Betting') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_choose_btn_text', 'Get Your IPL Betting ID Now & Start Betting') !!}</a>
         </div>
     </div>
 </section>
@@ -911,7 +911,7 @@
             })();
         </script>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_it_works_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_it_works_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
         </div>
     </div>
 </section>
@@ -958,7 +958,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20an%20IPL%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_id_works_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_id_works_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
         </div>
     </div>
 </section>
@@ -1056,8 +1056,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_1_title', 'Lords Exchange') !!}</h3>
-                            <p>{!! $page->section('platform_1_text', 'One of India\'s most popular and established exchanges. High betting limits, quick withdrawals within 5 minutes, and 24/7 support via Lords Exchange support number.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_1_badge', 'Popular') !!}</span>
+                            <p>{!! $page->raw('platform_1_text', 'One of India\'s most popular and established exchanges. High betting limits, quick withdrawals within 5 minutes, and 24/7 support via Lords Exchange support number.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_1_badge', 'Popular') !!}</span>
                         </div>
                     </a>
                     <a href="{{ route('lotus-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
@@ -1066,8 +1066,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_2_title', 'Lotus Exchange') !!}</h3>
-                            <p>{!! $page->section('platform_2_text', 'Fastest growing exchange known for speed, trust and reliability. Smooth mobile betting, fast ID activation and 24/7 assistance via Lotus Exchange contact number.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_2_badge', 'Trusted') !!}</span>
+                            <p>{!! $page->raw('platform_2_text', 'Fastest growing exchange known for speed, trust and reliability. Smooth mobile betting, fast ID activation and 24/7 assistance via Lotus Exchange contact number.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_2_badge', 'Trusted') !!}</span>
                         </div>
                     </a>
                     <a href="{{ route('sky-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
@@ -1076,8 +1076,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_3_title', 'Sky Exchange') !!}</h3>
-                            <p>{!! $page->section('platform_3_text', 'Well-established and highly trusted platform in India. Strong cricket markets including IPL and international matches, fast transactions and 24/7 support via Sky Exchange Contact Number.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_3_badge', 'Top Rated') !!}</span>
+                            <p>{!! $page->raw('platform_3_text', 'Well-established and highly trusted platform in India. Strong cricket markets including IPL and international matches, fast transactions and 24/7 support via Sky Exchange Contact Number.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_3_badge', 'Top Rated') !!}</span>
                         </div>
                     </a>
                     <a href="{{ route('fairplay') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
@@ -1086,8 +1086,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_4_title', 'Fairplay') !!}</h3>
-                            <p>{!! $page->section('platform_4_text', 'Global platform with a strong Indian user base. Best odds on short-format matches like IPL, BBL, CPL with fast real-time updates and in-play cash-out options.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_4_badge', 'Fair') !!}</span>
+                            <p>{!! $page->raw('platform_4_text', 'Global platform with a strong Indian user base. Best odds on short-format matches like IPL, BBL, CPL with fast real-time updates and in-play cash-out options.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_4_badge', 'Fair') !!}</span>
                         </div>
                     </a>
                     <a href="{{ route('mahadev-book') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
@@ -1096,8 +1096,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_5_title', 'Mahadev Book') !!}</h3>
-                            <p>{!! $page->section('platform_5_text', 'Renowned site with a significant following among Indian users. Coverage of cricket, football, tennis and casino with a wide range of markets, live streaming on select events, exciting bonuses and instant support via Mahadev Book Contact Number.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_5_badge', 'Popular') !!}</span>
+                            <p>{!! $page->raw('platform_5_text', 'Renowned site with a significant following among Indian users. Coverage of cricket, football, tennis and casino with a wide range of markets, live streaming on select events, exciting bonuses and instant support via Mahadev Book Contact Number.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_5_badge', 'Popular') !!}</span>
                         </div>
                     </a>
                     <a href="{{ route('reddy-anna') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
@@ -1106,8 +1106,8 @@
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_6_title', 'Reddy Anna') !!}</h3>
-                            <p>{!! $page->section('platform_6_text', 'Well-known platform with a large user base in India. Coverage of cricket, football and other sports with fast real-time updates, in-play cash-out options, exciting bonuses for new and existing users, and reliable Reddy Anna Book contact support.') !!}</p>
-                            <span class="platform-badge">{!! $page->section('platform_6_badge', 'Trusted') !!}</span>
+                            <p>{!! $page->raw('platform_6_text', 'Well-known platform with a large user base in India. Coverage of cricket, football and other sports with fast real-time updates, in-play cash-out options, exciting bonuses for new and existing users, and reliable Reddy Anna Book contact support.') !!}</p>
+                            <span class="platform-badge">{!! $page->raw('platform_6_badge', 'Trusted') !!}</span>
                         </div>
                     </a>
                 </div>
@@ -1244,7 +1244,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20to%20claim%20a%20Bonus" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('bonuses_btn_text', 'Claim Your Bonus Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('bonuses_btn_text', 'Claim Your Bonus Today') !!}</a>
         </div>
     </div>
 </section>
@@ -1284,10 +1284,10 @@
                 <h3>{!! $page->section('care_title', 'How to Contact Radhey Book Support') !!}</h3>
                 <p>{!! $page->section('care_text', 'Need help with your account or your Online Betting ID? Our 24/7 support team is reachable via WhatsApp, call support, or live chat for quick assistance with registration, deposits and general queries. Get step-by-step help via the IPL Betting ID number for a smooth, secure, hassle-free betting experience.') !!}</p>
                 <div class="care-contact">
-                    <span class="care-phone">{!! $page->section('care_phone', '+91 98765 43210') !!}</span>
+                    <span class="care-phone">{!! $page->section('care_phone', '+91 79017 12857') !!}</span>
                     <span class="care-email">{!! $page->section('care_email', 'support@radheybook.com') !!}</span>
                 </div>
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20need%20support" class="btn btn-gold" target="_blank" rel="noopener">{!! $page->section('care_support_btn_text', 'Contact Radhey Book Support Now') !!}</a>
+                <a href="https://linktr.ee/radheybook" class="btn btn-gold" target="_blank" rel="noopener">{!! $page->section('care_support_btn_text', 'Contact Radhey Book Support Now') !!}</a>
             </div>
         </div>
     </div>
@@ -1842,7 +1842,7 @@
             <h2>{!! $page->section('cta_title', 'Ready to Get Your <span class="text-gold">Betting ID</span>?') !!}</h2>
             <p>{!! $page->section('cta_text', 'Join 2 million+ players who trust Radhey Book. Get instant activation via WhatsApp with Welcome Bonus!') !!}</p>
             <div class="cta-buttons">
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+                <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.476-.682-6.297-1.848l-.44-.292-3.065 1.027 1.027-3.065-.292-.44A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                     {!! $page->section('cta_btn_text', 'Get Your ID on WhatsApp') !!}
                 </a>

@@ -17,7 +17,7 @@
         <h1 class="hero-title">{!! $page->section('hero_title', 'Play <span class="text-gold">Aviator Game</span> Online with Radhey Book') !!}</h1>
         <p class="hero-subtitle">{!! $page->section('hero_subtitle', 'Experience the thrill of the Aviator crash game. Watch the multiplier rise, cash out at the right moment and win big. Get your Aviator Game ID instantly via WhatsApp.') !!}</p>
         <div class="hero-cta">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 {!! $page->section('hero_btn_text', 'Get Aviator Game ID on WhatsApp') !!}
             </a>
         </div>
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div style="text-align:center; margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 {!! $page->section('how_works_btn_text', 'Play Aviator Now') !!}
             </a>
         </div>
@@ -228,7 +228,7 @@
             </div>
         </div>
         <div style="text-align:center; margin-top:40px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 {!! $page->section('how_btn_text', 'Get Aviator ID on WhatsApp') !!}
             </a>
         </div>
@@ -308,7 +308,7 @@
             <h2 class="section-title">{!! $page->section('cta_title', 'Ready to Play <span class="text-gold">Aviator</span>?') !!}</h2>
         </div>
         <p style="max-width:700px; margin:0 auto 30px; font-size:1.1rem;">{!! $page->section('cta_text', 'Get your Aviator Game ID from Radhey Book and start playing in under 2 minutes. Place your bets, watch the plane fly, cash out at the right time and win big. Instant withdrawals guaranteed.') !!}</p>
-        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
             {!! $page->section('cta_btn_text', 'Get Aviator Game ID on WhatsApp') !!}
         </a>
     </div>

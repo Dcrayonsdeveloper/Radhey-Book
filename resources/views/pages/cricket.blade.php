@@ -7,7 +7,7 @@
 @section('content')
 
 @php
-    $waLink = 'https://wa.me/' . ($siteSettings['whatsapp_number'] ?? '919876543210') . '?text=Hi%20I%20want%20an%20Online%20Cricket%20ID';
+    $waLink = 'https://linktr.ee/radheybook';
 @endphp
 
 {{-- HERO --}}

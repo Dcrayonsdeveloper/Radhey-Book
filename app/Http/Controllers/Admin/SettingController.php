@@ -21,8 +21,8 @@ class SettingController extends Controller
         $defaults = [
             'site_name' => 'Radhey Book',
             'logo_text' => 'RADHEY',
-            'whatsapp_number' => '919876543210',
-            'phone' => '919876543210',
+            'whatsapp_number' => '917901712857',
+            'phone' => '917901712857',
             'support_email' => 'support@radheybook.com',
             'welcome_bonus' => '100',
             'min_deposit' => '100',

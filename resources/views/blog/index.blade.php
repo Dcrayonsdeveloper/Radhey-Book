@@ -46,7 +46,7 @@
         <div class="cta-content">
             <h2>Ready to Start <span class="text-gold">Betting</span>?</h2>
             <p>Get your Radhey Betting ID now and start winning!</p>
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">Get Your ID on WhatsApp</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">Get Your ID on WhatsApp</a>
         </div>
     </div>
 </section>

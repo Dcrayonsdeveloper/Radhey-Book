@@ -55,11 +55,23 @@ class Page extends Model
             }
         }
 
-        return Keywords::bold($resolved);
+        return Keywords::link($resolved, request()->path(), $key);
     }
 
     public static function findBySlug(string $slug): ?self
     {
         return static::where('slug', $slug)->where('is_active', true)->first();
+    }
+
+    /**
+     * Fetch a section value WITHOUT keyword auto-linking. Use inside templates
+     * where the field is rendered inside an existing <a> wrapper (e.g. card
+     * links) to avoid nested anchor tags, which browsers reject and which
+     * break the surrounding flex/grid layout.
+     */
+    public function raw(string $key, $default = '')
+    {
+        $value = data_get($this->sections, $key);
+        return ($value !== null && $value !== '') ? $value : $default;
     }
 }

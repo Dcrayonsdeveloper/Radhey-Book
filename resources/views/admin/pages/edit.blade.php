@@ -178,10 +178,14 @@
         <div class="panel-body">
             <div class="form-grid">
                 @foreach($fields as $key => $def)
-                @php $fieldDefault = $sectionDefaults[$key] ?? ''; @endphp
+                @php
+                    $fieldDefault = $sectionDefaults[$key] ?? '';
+                    $stored = data_get($page->sections, $key);
+                    $rawValue = ($stored !== null && $stored !== '') ? $stored : $fieldDefault;
+                @endphp
                 <div class="form-group {{ $def['type'] === 'html' || $def['type'] === 'textarea' ? 'full-width' : '' }}">
                     @if($def['type'] === 'toggle')
-                        @php $isOn = old('sections.' . $key, $page->section($key, '1')) !== '0'; @endphp
+                        @php $isOn = old('sections.' . $key, ($stored !== null && $stored !== '') ? $stored : '1') !== '0'; @endphp
                         <label class="toggle-label">
                             <span class="toggle-text">{{ $def['label'] }}</span>
                             <input type="hidden" name="sections[{{ $key }}]" value="0">
@@ -192,12 +196,13 @@
                         <label>{{ $def['label'] }}</label>
                         @if($def['type'] === 'text')
                             <input type="text" name="sections[{{ $key }}]" class="form-control"
-                                   value="{{ old('sections.' . $key, $page->section($key, $fieldDefault)) }}">
-                        @elseif($def['type'] === 'textarea')
-                            <textarea name="sections[{{ $key }}]" class="form-control" rows="3">{{ old('sections.' . $key, $page->section($key, $fieldDefault)) }}</textarea>
-                        @elseif($def['type'] === 'html')
-                            <textarea name="sections[{{ $key }}]" class="form-control" rows="10">{{ old('sections.' . $key, $page->section($key, $fieldDefault)) }}</textarea>
-                            <span class="form-hint">HTML tags are supported for formatting.</span>
+                                   value="{{ old('sections.' . $key, $rawValue) }}">
+                        @elseif($def['type'] === 'textarea' || $def['type'] === 'html')
+                            <div class="field-with-link-picker">
+                                <button type="button" class="btn-link-picker" data-target-name="sections[{{ $key }}]">🔗 Insert link</button>
+                                <textarea name="sections[{{ $key }}]" class="form-control" rows="{{ $def['type'] === 'html' ? 10 : 3 }}">{{ old('sections.' . $key, $rawValue) }}</textarea>
+                                <span class="form-hint">HTML tags are supported. Use the Insert link button or type <code>&lt;a href="/page-slug"&gt;text&lt;/a&gt;</code> for internal links.</span>
+                            </div>
                         @endif
                     @endif
                 </div>
@@ -214,6 +219,123 @@
         <a href="{{ route('admin.pages.index') }}" class="btn btn-outline">Cancel</a>
     </div>
 </form>
+
+<div id="link-picker-modal" class="link-picker-modal" hidden>
+    <div class="link-picker-overlay" data-close></div>
+    <div class="link-picker-dialog">
+        <div class="link-picker-header">
+            <h3>Insert Link</h3>
+            <button type="button" class="link-picker-close" data-close>&times;</button>
+        </div>
+        <div class="link-picker-tabs">
+            <button type="button" class="lp-tab is-active" data-tab="page">Pages</button>
+            <button type="button" class="lp-tab" data-tab="blog">Blog</button>
+            <button type="button" class="lp-tab" data-tab="external">External</button>
+        </div>
+        <div class="link-picker-body">
+            <div class="lp-pane lp-pane-page is-active">
+                <input type="text" class="lp-search" placeholder="Search pages…">
+                <select class="lp-select lp-select-page" size="8">
+                    @foreach(($linkPages ?? []) as $p)
+                        <option value="{{ $p['url'] }}" data-label="{{ $p['label'] }}">{{ $p['label'] }} — {{ $p['url'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="lp-pane lp-pane-blog">
+                <input type="text" class="lp-search" placeholder="Search blog posts…">
+                <select class="lp-select lp-select-blog" size="8">
+                    @foreach(($linkPosts ?? []) as $p)
+                        <option value="{{ $p['url'] }}" data-label="{{ $p['label'] }}">{{ $p['label'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="lp-pane lp-pane-external">
+                <label>URL</label>
+                <input type="url" class="lp-external-url" placeholder="https://example.com">
+            </div>
+            <div class="lp-link-text-row">
+                <label>Link text</label>
+                <input type="text" class="lp-link-text" placeholder="Text shown to visitor">
+            </div>
+        </div>
+        <div class="link-picker-footer">
+            <button type="button" class="btn btn-outline" data-close>Cancel</button>
+            <button type="button" class="btn btn-gold lp-insert">Insert</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const modal = document.getElementById('link-picker-modal');
+    if (!modal) return;
+    const tabs     = modal.querySelectorAll('.lp-tab');
+    const panes    = modal.querySelectorAll('.lp-pane');
+    const linkText = modal.querySelector('.lp-link-text');
+    const insertBtn= modal.querySelector('.lp-insert');
+    const pageSel  = modal.querySelector('.lp-select-page');
+    const blogSel  = modal.querySelector('.lp-select-blog');
+    const extUrl   = modal.querySelector('.lp-external-url');
+    let activeTextarea = null;
+    let activeTab = 'page';
+
+    function openModal(textarea) {
+        activeTextarea = textarea;
+        const sel = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+        linkText.value = sel || '';
+        modal.hidden = false;
+    }
+    function closeModal() { modal.hidden = true; activeTextarea = null; }
+
+    document.querySelectorAll('.btn-link-picker').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ta = document.querySelector('textarea[name="' + btn.dataset.targetName + '"]');
+            if (ta) openModal(ta);
+        });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+
+    tabs.forEach(t => t.addEventListener('click', () => {
+        activeTab = t.dataset.tab;
+        tabs.forEach(x => x.classList.toggle('is-active', x === t));
+        panes.forEach(p => p.classList.toggle('is-active', p.classList.contains('lp-pane-' + activeTab)));
+    }));
+
+    [pageSel, blogSel].forEach(sel => {
+        if (!sel) return;
+        sel.addEventListener('change', () => {
+            const opt = sel.options[sel.selectedIndex];
+            if (opt && !linkText.value) linkText.value = opt.dataset.label || '';
+        });
+    });
+
+    modal.querySelectorAll('.lp-search').forEach(input => {
+        input.addEventListener('input', () => {
+            const q = input.value.toLowerCase();
+            const sel = input.closest('.lp-pane').querySelector('.lp-select');
+            Array.from(sel.options).forEach(o => { o.hidden = !o.text.toLowerCase().includes(q); });
+        });
+    });
+
+    insertBtn.addEventListener('click', () => {
+        if (!activeTextarea) return;
+        let url = '';
+        if (activeTab === 'page')      url = pageSel.value;
+        else if (activeTab === 'blog') url = blogSel.value;
+        else                           url = extUrl.value.trim();
+        if (!url) { alert('Pick a destination'); return; }
+        const text = (linkText.value || url).trim();
+        const html = '<a href="' + url + '">' + text + '</a>';
+        const ta = activeTextarea;
+        const start = ta.selectionStart, end = ta.selectionEnd;
+        ta.value = ta.value.substring(0, start) + html + ta.value.substring(end);
+        ta.focus();
+        ta.selectionStart = ta.selectionEnd = start + html.length;
+        closeModal();
+    });
+})();
+</script>
 
 <div class="sticky-save-bar">
     <span class="sticky-save-title">{{ $page->title }}</span>

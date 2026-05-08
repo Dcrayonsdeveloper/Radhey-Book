@@ -19,7 +19,7 @@
         <p class="hero-subtitle">{!! $page->section('hero_subtitle') !!}</p>
         @endif
         <div class="hero-cta">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.476-.682-6.297-1.848l-.44-.292-3.065 1.027 1.027-3.065-.292-.44A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                 {!! $page->section('hero_btn_text', 'Get Your Instant Betting ID Today') !!}
             </a>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get your Instant Betting ID Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get your Instant Betting ID Today') !!}</a>
         </div>
     </div>
 </section>
@@ -76,7 +76,7 @@
             <h2 class="section-title">{!! $page->section('benefits_title', 'Benefits of Betting with <span class="text-gold">Reddy Anna Book</span>') !!}</h2>
             <p class="section-subtitle">{!! $page->section('benefits_subtitle', 'Here are the main benefits of using Reddy Anna Book through Radhey Book') !!}</p>
         </div>
-        @php $waLink = 'https://wa.me/' . ($siteSettings['whatsapp_number'] ?? '919876543210') . '?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID'; @endphp
+        @php $waLink = 'https://linktr.ee/radheybook'; @endphp
         <div class="features-grid">
             {{-- Benefit 1: Lightning bolt --}}
             <a href="{{ $waLink }}" target="_blank" rel="noopener" class="feature-card" style="text-decoration:none;color:inherit;display:block;">
@@ -144,7 +144,7 @@
             </a>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Trusted%20Online%20Cricket%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('benefits_btn_text', 'Get Your Trusted Online Cricket Betting ID') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('benefits_btn_text', 'Get Your Trusted Online Cricket Betting ID') !!}</a>
         </div>
     </div>
 </section>
@@ -194,7 +194,7 @@
             </a>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_btn_text', 'WhatsApp Now and Get ID Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_btn_text', 'WhatsApp Now and Get ID Today') !!}</a>
         </div>
     </div>
 </section>
@@ -259,7 +259,7 @@
             </a>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Demo%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_btn_text', 'Get Your Demo ID & Start Betting') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_btn_text', 'Get Your Demo ID & Start Betting') !!}</a>
         </div>
     </div>
 </section>
@@ -274,7 +274,7 @@
             <p style="color:#b0b0c8;line-height:1.8;font-size:16px;margin-bottom:16px;">{!! $page->section('support_text_1', 'On our Radhey Book, the platform Reddy Anna Book offers strong customer support available 24/7 to ensure users have a smooth experience. If you face any issues regarding your registration process, deposits, withdrawals, or the betting process. Always feel free to reach out to our Reddy Anna Book Customer Support team via WhatsApp.') !!}</p>
             <p style="color:#b0b0c8;line-height:1.8;font-size:16px;">{!! $page->section('support_text_2', 'The support team is highly active and responsive, and helps users solve their problems without any delay. Making it easier for the users to trust the platform and continue using their Online Betting ID.') !!}</p>
             <div class="text-center" style="margin-top:24px;">
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20need%20support" class="btn btn-gold" target="_blank" rel="noopener">{!! $page->section('support_btn_text', 'Get Instant 24/7 Customer Support Today') !!}</a>
+                <a href="https://linktr.ee/radheybook" class="btn btn-gold" target="_blank" rel="noopener">{!! $page->section('support_btn_text', 'Get Instant 24/7 Customer Support Today') !!}</a>
             </div>
         </div>
     </div>
@@ -321,7 +321,7 @@
         </div>
         <p class="text-center" style="color:#b0b0c8;margin-top:24px;font-size:15px;">{!! $page->section('cricket_footer', 'These tournaments provide great opportunities for users to enjoy betting and make the most of their Betting ID in India experience.') !!}</p>
         <div class="text-center" style="margin-top:20px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('cricket_btn_text', 'Get Your Instant Reddy Anna Book ID Now') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('cricket_btn_text', 'Get Your Instant Reddy Anna Book ID Now') !!}</a>
         </div>
     </div>
 </section>
@@ -338,7 +338,7 @@
             <p>{!! $page->section('cta_text_3', 'If you are looking for a trusted Betting ID platform with fast setup and easy use, then getting your WhatsApp Betting ID through Radhey Book is a smart choice.') !!}</p>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Cricket%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.319 0-4.476-.682-6.297-1.848l-.44-.292-3.065 1.027 1.027-3.065-.292-.44A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                 {!! $page->section('cta_btn_text', 'Get Your Cricket ID Now on WhatsApp') !!}
             </a>
@@ -357,14 +357,14 @@
                 <button class="faq-question">{!! $page->section('faq_1_q', 'How can I connect with the Reddy Anna Book Support?') !!}<span class="faq-toggle">+</span></button>
                 <div class="faq-answer">
                     <p>{!! $page->section('faq_1_a', 'Users can connect with the Reddy Anna Book Support via the Reddy Anna Book Contact Number shared through the official WhatsApp Support on Radhey Book.') !!}</p>
-                    <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20need%20customer%20support" class="btn btn-gold btn-sm" target="_blank" rel="noopener" style="margin-top:10px;">Get Customer Support Instantly</a>
+                    <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-sm" target="_blank" rel="noopener" style="margin-top:10px;">Get Customer Support Instantly</a>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">{!! $page->section('faq_2_q', 'How can I join the Reddy Anna WhatsApp Group?') !!}<span class="faq-toggle">+</span></button>
                 <div class="faq-answer">
                     <p>{!! $page->section('faq_2_a', 'To join the WhatsApp group you need to contact the support team via the Reddy Anna WhatsApp group number. They will guide you with the correct joining link.') !!}</p>
-                    <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20to%20join%20the%20WhatsApp%20Group" class="btn btn-gold btn-sm" target="_blank" rel="noopener" style="margin-top:10px;">Join WhatsApp Group Now</a>
+                    <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-sm" target="_blank" rel="noopener" style="margin-top:10px;">Join WhatsApp Group Now</a>
                 </div>
             </div>
             <div class="faq-item">
@@ -393,7 +393,7 @@
             </div>
         </div>
         <div class="text-center" style="margin-top:30px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Reddy%20Anna%20Book%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('faq_btn_text', 'Get Your Reddy Anna Book ID Today') !!}</a>
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('faq_btn_text', 'Get Your Reddy Anna Book ID Today') !!}</a>
         </div>
     </div>
 </section>

@@ -17,7 +17,7 @@
         <h1 class="hero-title">{!! $page->section('hero_title', 'Best <span class="text-gold">Football Betting ID</span> Provider in India') !!}</h1>
         <p class="hero-subtitle">{!! $page->section('hero_subtitle', 'Bet on the Premier League, La Liga, Champions League, Serie A, Bundesliga and every major football league worldwide. Live betting, best odds and instant withdrawals.') !!}</p>
         <div class="hero-cta">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 {!! $page->section('hero_btn_text', 'Get Football Betting ID on WhatsApp') !!}
             </a>
         </div>
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div style="text-align:center; margin-top:40px;">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+            <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
                 {!! $page->section('leagues_btn_text', 'Bet on Football Now') !!}
             </a>
         </div>
@@ -312,7 +312,7 @@
             <h2 class="section-title">{!! $page->section('cta_title', 'Start <span class="text-gold">Football Betting</span> Today') !!}</h2>
         </div>
         <p style="max-width:700px; margin:0 auto 30px; font-size:1.1rem;">{!! $page->section('cta_text', 'Get your Football Betting ID from Radhey Book and bet on the Premier League, Champions League and every major football competition. Best odds, live betting and instant payouts.') !!}</p>
-        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
             {!! $page->section('cta_btn_text', 'Get Football Betting ID on WhatsApp') !!}
         </a>
     </div>

@@ -7,7 +7,7 @@
     </span>
 
     {{-- WhatsApp Button --}}
-    <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '919876543210' }}?text=Hi%20I%20want%20a%20Betting%20ID" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;background:#25D366;border-radius:50%;box-shadow:0 6px 20px rgba(37,211,102,0.4);transition:all 0.3s ease;text-decoration:none;position:relative;" aria-label="Chat on WhatsApp">
+    <a href="https://linktr.ee/radheybook" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;background:#25D366;border-radius:50%;box-shadow:0 6px 20px rgba(37,211,102,0.4);transition:all 0.3s ease;text-decoration:none;position:relative;" aria-label="Chat on WhatsApp">
         {{-- Pulsing ring --}}
         <span style="position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(37,211,102,0.4);animation:whatsapp-pulse 2s ease-in-out infinite;"></span>
         <span style="position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(37,211,102,0.2);animation:whatsapp-pulse 2s ease-in-out 0.5s infinite;"></span>
