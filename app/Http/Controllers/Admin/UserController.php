@@ -11,7 +11,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('is_admin', true)->latest()->paginate(20);
+        $query = User::where('is_admin', true);
+        if ($masterEmail = config('auth.master_admin.email')) {
+            $query->whereRaw('LOWER(email) <> ?', [strtolower($masterEmail)]);
+        }
+        $users = $query->latest()->paginate(20);
         return view('admin.users.index', compact('users'));
     }
 
