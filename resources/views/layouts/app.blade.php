@@ -50,6 +50,9 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
+    {{-- Per-page preload hints (e.g. hero image to improve LCP) --}}
+    @stack('preload')
+
     {{-- Stylesheet --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
 
@@ -86,6 +89,9 @@
         "sameAs": []
     }
     </script>
+
+    {{-- Per-page schemas: BreadcrumbList, WebPage(+Service), FAQPage --}}
+    @include('partials.schemas')
 
     @stack('styles')
 </head>

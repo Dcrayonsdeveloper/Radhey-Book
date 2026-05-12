@@ -38,7 +38,7 @@ class PageController extends Controller
     public function tennis() { return $this->renderPage('tennis-betting-id', 'pages.tennis'); }
     public function football() { return $this->renderPage('football-betting-id', 'pages.football'); }
     public function aviator() { return $this->renderPage('aviator', 'pages.aviator'); }
-    public function lordExchange() { return $this->renderPage('lord-exchange', 'pages.lord-exchange'); }
+    public function lordExchange() { return $this->renderPage('lords-exchange', 'pages.lords-exchange'); }
     public function lotusExchange() { return $this->renderPage('lotus-exchange', 'pages.lotus-exchange'); }
     public function fairplay() { return $this->renderPage('fairplay-369', 'pages.fairplay'); }
     public function skyExchange() { return $this->renderPage('sky-exchange', 'pages.sky-exchange'); }
@@ -78,7 +78,7 @@ class PageController extends Controller
             ['loc' => url('/tennis-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/football-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/aviator'), 'changefreq' => 'weekly', 'priority' => '0.8'],
-            ['loc' => url('/lord-exchange'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['loc' => url('/lords-exchange'), 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['loc' => url('/lotus-exchange'), 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['loc' => url('/fairplay-369'), 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['loc' => url('/sky-exchange'), 'changefreq' => 'monthly', 'priority' => '0.7'],

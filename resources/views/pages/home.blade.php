@@ -4,6 +4,13 @@
 @section('meta_description', $meta_description ?? "Get your verified and secured online cricket ID instantly with Radhey Book today. Start betting on cricket, casino and other games, with 24/7 customer support, live odds, betting insights, latest updates, and fast deposits and withdrawals.")
 @section('meta_keywords', $meta_keywords ?? 'online cricket ID, IPL betting ID, online betting ID, cricket betting ID, radhey book, betting ID provider india, T20 betting ID')
 
+@push('preload')
+    {{-- Preload the active hero slide image to dramatically improve LCP.
+         Without this the browser only discovers the URL after CSS parses,
+         delaying first paint of the hero by hundreds of ms. --}}
+    <link rel="preload" as="image" href="{{ asset('images/all banner/ipl banner.png') }}" fetchpriority="high">
+@endpush
+
 @section('content')
 
 {{-- HERO SECTION WITH CAROUSEL --}}
@@ -152,7 +159,7 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/virat.jpg') }}" alt="Radhey Book - India's Leading Online Betting ID Provider">
+                <img src="{{ asset('images/virat.jpg') }}" alt="Radhey Book - India's Leading Online Betting ID Provider" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="intro-content">
@@ -183,7 +190,7 @@
         </div>
         <div class="split-row image-right">
             <div class="split-media">
-                <img src="{{ asset('images/T-20 World Cup.png') }}" alt="T20 World Cup 2026 Betting">
+                <img src="{{ asset('images/T-20 World Cup.png') }}" alt="T20 World Cup 2026 Betting" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="why-2026-card">
@@ -213,7 +220,7 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/cricket.png') }}" alt="What is IPL Betting ID - Cricket">
+                <img src="{{ asset('images/cricket.png') }}" alt="What is IPL Betting ID - Cricket" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="what-is-content">
@@ -463,7 +470,7 @@
         <div class="trust-cta-card">
             <div class="split-row image-right">
                 <div class="split-media">
-                    <img src="{{ asset('images/homepage img.png') }}" alt="Trusted IPL Betting ID Provider">
+                    <img src="{{ asset('images/homepage img.png') }}" alt="Trusted IPL Betting ID Provider" loading="lazy" decoding="async">
                 </div>
                 <div class="split-content">
                     <div class="trust-cta-content">
@@ -985,7 +992,7 @@
         <div class="services-grid">
             <a href="{{ route('cricket') }}" class="service-card service-card--has-image">
                 <div class="service-card-image">
-                    <img src="{{ asset('images/cricket.png') }}" alt="Cricket Betting">
+                    <img src="{{ asset('images/cricket.png') }}" alt="Cricket Betting" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>{!! $page->section('service_1_title', 'Cricket Betting ID') !!}</h3>
@@ -995,7 +1002,7 @@
             </a>
             <a href="{{ route('tennis') }}" class="service-card service-card--has-image">
                 <div class="service-card-image">
-                    <img src="{{ asset('images/tennis.png') }}" alt="Tennis Betting">
+                    <img src="{{ asset('images/tennis.png') }}" alt="Tennis Betting" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>{!! $page->section('service_2_title', 'Tennis Betting ID') !!}</h3>
@@ -1005,7 +1012,7 @@
             </a>
             <a href="{{ route('casino') }}" class="service-card service-card--has-image">
                 <div class="service-card-image">
-                    <img src="{{ asset('images/casino.png') }}" alt="Casino Games">
+                    <img src="{{ asset('images/casino.png') }}" alt="Casino Games" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>{!! $page->section('service_3_title', 'Casino ID') !!}</h3>
@@ -1015,7 +1022,7 @@
             </a>
             <a href="{{ route('football') }}" class="service-card service-card--has-image">
                 <div class="service-card-image">
-                    <img src="{{ asset('images/football.png') }}" alt="Football Betting">
+                    <img src="{{ asset('images/football.png') }}" alt="Football Betting" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>{!! $page->section('service_4_title', 'Football Betting ID') !!}</h3>
@@ -1025,7 +1032,7 @@
             </a>
             <a href="{{ route('aviator') }}" class="service-card service-card--has-image">
                 <div class="service-card-image">
-                    <img src="{{ asset('images/aviator.png') }}" alt="Aviator Game">
+                    <img src="{{ asset('images/aviator.png') }}" alt="Aviator Game" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>{!! $page->section('service_5_title', 'Aviator Game') !!}</h3>
@@ -1050,9 +1057,9 @@
             <button class="platforms-carousel-btn platforms-carousel-prev" type="button" aria-label="Previous">&#10094;</button>
             <div class="platforms-carousel-viewport">
                 <div class="platforms-grid platforms-carousel-track">
-                    <a href="{{ route('lord-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
+                    <a href="{{ route('lords-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/lords exchange.png') }}" alt="Lord Exchange">
+                            <img src="{{ asset('images/lords exchange.png') }}" alt="Lord Exchange" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_1_title', 'Lords Exchange') !!}</h3>
@@ -1062,7 +1069,7 @@
                     </a>
                     <a href="{{ route('lotus-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/lotus exchange.png') }}" alt="Lotus Exchange">
+                            <img src="{{ asset('images/lotus exchange.png') }}" alt="Lotus Exchange" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_2_title', 'Lotus Exchange') !!}</h3>
@@ -1072,7 +1079,7 @@
                     </a>
                     <a href="{{ route('sky-exchange') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/sky exchange.png') }}" alt="Sky Exchange">
+                            <img src="{{ asset('images/sky exchange.png') }}" alt="Sky Exchange" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_3_title', 'Sky Exchange') !!}</h3>
@@ -1082,7 +1089,7 @@
                     </a>
                     <a href="{{ route('fairplay') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/fairplay.png') }}" alt="Fairplay">
+                            <img src="{{ asset('images/fairplay.png') }}" alt="Fairplay" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_4_title', 'Fairplay') !!}</h3>
@@ -1092,7 +1099,7 @@
                     </a>
                     <a href="{{ route('mahadev-book') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/mahadev 1.png') }}" alt="Mahadev Book">
+                            <img src="{{ asset('images/mahadev 1.png') }}" alt="Mahadev Book" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_5_title', 'Mahadev Book') !!}</h3>
@@ -1102,7 +1109,7 @@
                     </a>
                     <a href="{{ route('reddy-anna') }}" class="platform-card platform-card--has-image platforms-carousel-slide">
                         <div class="platform-card-image">
-                            <img src="{{ asset('images/Reddy Anna-1.png') }}" alt="Reddy Anna Book">
+                            <img src="{{ asset('images/Reddy Anna-1.png') }}" alt="Reddy Anna Book" loading="lazy" decoding="async">
                         </div>
                         <div class="platform-card-body">
                             <h3>{!! $page->section('platform_6_title', 'Reddy Anna') !!}</h3>
@@ -1341,31 +1348,31 @@
             <div class="payment-methods-row">
                 <div class="payment-card">
                     <div class="payment-icon">
-                        <img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:40px;height:40px;object-fit:contain;">
+                        <img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:40px;height:40px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <span>Bank Transfer</span>
                 </div>
                 <div class="payment-card">
                     <div class="payment-icon">
-                        <img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:40px;height:40px;object-fit:contain;">
+                        <img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:40px;height:40px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <span>UPI</span>
                 </div>
                 <div class="payment-card">
                     <div class="payment-icon">
-                        <img src="{{ asset('images/Untitled design (2) (1)/gpay.png') }}" alt="Google Pay" style="width:40px;height:40px;object-fit:contain;">
+                        <img src="{{ asset('images/Untitled design (2) (1)/gpay.png') }}" alt="Google Pay" style="width:40px;height:40px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <span>Google Pay</span>
                 </div>
                 <div class="payment-card">
                     <div class="payment-icon">
-                        <img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:40px;height:40px;object-fit:contain;">
+                        <img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:40px;height:40px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <span>Paytm</span>
                 </div>
                 <div class="payment-card">
                     <div class="payment-icon">
-                        <img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:40px;height:40px;object-fit:contain;">
+                        <img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:40px;height:40px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <span>PhonePe</span>
                 </div>
@@ -1410,16 +1417,16 @@
             <div class="proof-carousel-viewport">
                 <div class="proof-grid proof-carousel-track" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:flex-start;">
                     <div class="proof-card proof-carousel-slide" style="padding:0;overflow:hidden;background:transparent;border:none;flex:1 1 220px;max-width:300px;">
-                        <img src="{{ asset('images/ss/ss11.png') }}" alt="Withdrawal Proof 1" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;">
+                        <img src="{{ asset('images/ss/ss11.png') }}" alt="Withdrawal Proof 1" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <div class="proof-card proof-carousel-slide" style="padding:0;overflow:hidden;background:transparent;border:none;flex:1 1 220px;max-width:300px;">
-                        <img src="{{ asset('images/ss/ss22.png') }}" alt="Withdrawal Proof 2" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;">
+                        <img src="{{ asset('images/ss/ss22.png') }}" alt="Withdrawal Proof 2" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <div class="proof-card proof-carousel-slide" style="padding:0;overflow:hidden;background:transparent;border:none;flex:1 1 220px;max-width:300px;">
-                        <img src="{{ asset('images/ss/ss33.png') }}" alt="Withdrawal Proof 3" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;">
+                        <img src="{{ asset('images/ss/ss33.png') }}" alt="Withdrawal Proof 3" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                     <div class="proof-card proof-carousel-slide" style="padding:0;overflow:hidden;background:transparent;border:none;flex:1 1 220px;max-width:300px;">
-                        <img src="{{ asset('images/ss/ss44.png') }}" alt="Withdrawal Proof 4" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;">
+                        <img src="{{ asset('images/ss/ss44.png') }}" alt="Withdrawal Proof 4" style="width:100%;height:auto;display:block;border-radius:12px;object-fit:contain;" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>

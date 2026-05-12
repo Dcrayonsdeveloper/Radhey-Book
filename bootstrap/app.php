@@ -14,7 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
-        // CSRF enabled for all routes including lead tracking
+
+        // Run BEFORE the route is matched so the redirect happens even if the
+        // from_path also has a real route registered.
+        $middleware->prepend(\App\Http\Middleware\HandleRedirects::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

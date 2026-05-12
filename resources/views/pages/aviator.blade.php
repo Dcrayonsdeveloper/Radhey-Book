@@ -32,7 +32,7 @@
         </div>
         <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
             <div style="flex:1;min-width:300px;max-width:500px;">
-                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/aviator_1.png') }}" alt="Aviator Game" style="width:100%;border-radius:16px;">
+                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/aviator_1.png') }}" alt="Aviator Game" style="width:100%;border-radius:16px;" loading="lazy" decoding="async">
             </div>
             <div style="flex:1;min-width:300px;">
                 <div class="content-block">

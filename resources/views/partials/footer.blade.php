@@ -89,23 +89,23 @@
             <p style="font-size:13px;color:#aaaaaa;margin-bottom:15px;text-transform:uppercase;letter-spacing:1px;">Payment Methods We Accept</p>
             <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;">
                 <span style="background:rgba(255,255,255,0.08);padding:8px 20px;border-radius:6px;font-size:13px;color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px;">
-                    <img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:18px;height:18px;object-fit:contain;">
+                    <img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:18px;height:18px;object-fit:contain;" loading="lazy" decoding="async">
                     UPI
                 </span>
                 <span style="background:rgba(255,255,255,0.08);padding:8px 20px;border-radius:6px;font-size:13px;color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px;">
-                    <img src="{{ asset('images/Untitled design (2) (1)/gpay.png') }}" alt="GPay" style="width:18px;height:18px;object-fit:contain;">
+                    <img src="{{ asset('images/Untitled design (2) (1)/gpay.png') }}" alt="GPay" style="width:18px;height:18px;object-fit:contain;" loading="lazy" decoding="async">
                     GPay
                 </span>
                 <span style="background:rgba(255,255,255,0.08);padding:8px 20px;border-radius:6px;font-size:13px;color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px;">
-                    <img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:18px;height:18px;object-fit:contain;">
+                    <img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:18px;height:18px;object-fit:contain;" loading="lazy" decoding="async">
                     Paytm
                 </span>
                 <span style="background:rgba(255,255,255,0.08);padding:8px 20px;border-radius:6px;font-size:13px;color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px;">
-                    <img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:18px;height:18px;object-fit:contain;">
+                    <img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:18px;height:18px;object-fit:contain;" loading="lazy" decoding="async">
                     PhonePe
                 </span>
                 <span style="background:rgba(255,255,255,0.08);padding:8px 20px;border-radius:6px;font-size:13px;color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px;">
-                    <img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:18px;height:18px;object-fit:contain;">
+                    <img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:18px;height:18px;object-fit:contain;" loading="lazy" decoding="async">
                     Bank Transfer
                 </span>
             </div>

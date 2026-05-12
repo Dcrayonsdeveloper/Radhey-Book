@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\RedirectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\UserController;
@@ -32,7 +33,8 @@ Route::get('/football-betting-id', [PageController::class, 'football'])->name('f
 Route::get('/aviator', [PageController::class, 'aviator'])->name('aviator');
 
 // Exchange platform pages
-Route::get('/lord-exchange', [PageController::class, 'lordExchange'])->name('lord-exchange');
+// Renamed from /lord-exchange — old URL is 301-redirected via the redirects table.
+Route::get('/lords-exchange', [PageController::class, 'lordExchange'])->name('lords-exchange');
 Route::get('/lotus-exchange', [PageController::class, 'lotusExchange'])->name('lotus-exchange');
 Route::get('/fairplay-369', [PageController::class, 'fairplay'])->name('fairplay');
 Route::get('/sky-exchange', [PageController::class, 'skyExchange'])->name('sky-exchange');
@@ -98,6 +100,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
         Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
         Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
+
+        // URL redirects
+        Route::get('/redirects', [RedirectController::class, 'index'])->name('redirects.index');
+        Route::get('/redirects/create', [RedirectController::class, 'create'])->name('redirects.create');
+        Route::post('/redirects', [RedirectController::class, 'store'])->name('redirects.store');
+        Route::get('/redirects/{redirect}/edit', [RedirectController::class, 'edit'])->name('redirects.edit');
+        Route::put('/redirects/{redirect}', [RedirectController::class, 'update'])->name('redirects.update');
+        Route::patch('/redirects/{redirect}/toggle', [RedirectController::class, 'toggle'])->name('redirects.toggle');
+        Route::delete('/redirects/{redirect}', [RedirectController::class, 'destroy'])->name('redirects.destroy');
 
         // Admin users
         Route::resource('users', UserController::class)->except(['show']);

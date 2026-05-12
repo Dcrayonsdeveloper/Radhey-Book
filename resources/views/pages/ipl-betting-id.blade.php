@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div style="flex:1;min-width:300px;max-width:500px;">
-                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/cricket_5.png') }}" alt="IPL Betting ID" style="width:100%;border-radius:16px;">
+                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/cricket_5.png') }}" alt="IPL Betting ID" style="width:100%;border-radius:16px;" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
         </div>
         <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
             <div style="flex:1;min-width:300px;max-width:500px;">
-                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/cricket_6.png') }}" alt="IPL Betting" style="width:100%;border-radius:16px;">
+                <img src="{{ asset('images/TENNIS FOOTBALL AVIATOR/cricket_6.png') }}" alt="IPL Betting" style="width:100%;border-radius:16px;" loading="lazy" decoding="async">
             </div>
             <div style="flex:1;min-width:300px;">
                 <div class="content-block">
@@ -217,19 +217,19 @@
         </div>
         <div class="features-grid" style="grid-template-columns:repeat(4,1fr);max-width:800px;margin:0 auto;">
             <div class="feature-card" style="text-align:center;">
-                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:48px;height:48px;object-fit:contain;"></div>
+                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/upi.png') }}" alt="UPI" style="width:48px;height:48px;object-fit:contain;" loading="lazy" decoding="async"></div>
                 <h3>UPI</h3>
             </div>
             <div class="feature-card" style="text-align:center;">
-                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:48px;height:48px;object-fit:contain;"></div>
+                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/bank transfer.png') }}" alt="Bank Transfer" style="width:48px;height:48px;object-fit:contain;" loading="lazy" decoding="async"></div>
                 <h3>Bank Transfer</h3>
             </div>
             <div class="feature-card" style="text-align:center;">
-                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:48px;height:48px;object-fit:contain;"></div>
+                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/paytm.png') }}" alt="Paytm" style="width:48px;height:48px;object-fit:contain;" loading="lazy" decoding="async"></div>
                 <h3>Paytm</h3>
             </div>
             <div class="feature-card" style="text-align:center;">
-                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:48px;height:48px;object-fit:contain;"></div>
+                <div class="feature-icon"><img src="{{ asset('images/Untitled design (2) (1)/phonepe.png') }}" alt="PhonePe" style="width:48px;height:48px;object-fit:contain;" loading="lazy" decoding="async"></div>
                 <h3>PhonePe</h3>
             </div>
         </div>
