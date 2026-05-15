@@ -33,8 +33,8 @@
 <section class="section">
     <div class="container">
         <div class="page-intro">
-            <p>{!! $page->section('intro_p1', "Radhey Book offers a convenient solution for obtaining your Football Betting ID in just minutes if you're seeking a rapid and reliable means to begin making bets on football online. Registration on WhatsApp is straightforward, activation is swift, and users receive immediate assistance — ensuring they can begin wagering on live football games without enduring cumbersome processes. From international leagues to UEFA matches and FIFA tournaments, Radhey Book offers a seamless betting experience with quick login and secure transactions.") !!}</p>
-            <p>{!! $page->section('intro_p2', 'Getting a football betting ID provider through WhatsApp is now one of the easiest methods for football fans in India. Users can quickly connect with support, get their account details, make deposits, and start betting from mobile or desktop devices. From live football odds to instant withdrawals, Radhey Book is designed for users who want a reliable and user-friendly betting platform with quick customer assistance.') !!}</p>
+            <p>{!! $page->section('intro_p1', "Radhey Book offers a convenient solution for obtaining your <strong>Football Betting ID</strong> in just minutes if you're seeking a rapid and reliable means to begin making bets on football online. Registration on WhatsApp is straightforward, activation is swift, and users receive immediate assistance — ensuring they can begin wagering on live football games without enduring cumbersome processes. From international leagues to UEFA matches and FIFA tournaments, Radhey Book offers a seamless betting experience with quick login and secure transactions.") !!}</p>
+            <p>{!! $page->section('intro_p2', 'Getting a <strong>football betting ID provider</strong> through WhatsApp is now one of the easiest methods for football fans in India. Users can quickly connect with support, get their account details, make deposits, and start betting from mobile or desktop devices. From live football odds to instant withdrawals, Radhey Book is designed for users who want a reliable and user-friendly betting platform with quick customer assistance.') !!}</p>
         </div>
     </div>
 </section>
@@ -46,9 +46,9 @@
             <h2 class="section-title">{!! $page->section('what_is_title', 'What is an <span class="text-gold">Online Football Betting ID</span>?') !!}</h2>
         </div>
         <div class="what-is-content">
-            <p>{!! $page->section('what_is_p1', 'A Football Betting ID is an online betting account where users can bet on football matches and tournaments. This ID is useful for players who want to view betting markets for match winners, total goals, player performance, live betting, halftime scores and more.') !!}</p>
-            <p>{!! $page->section('what_is_p2', 'A trusted football betting panel ID provides comprehensive access to betting options, live odds, safe wallets, and quick withdrawals. A betting ID can organize all football betting activities from a single location — whether you are interested in Premier League games, Champions League games or international tournaments.') !!}</p>
-            <p>{!! $page->section('what_is_p3', 'Given that users will be looking for instant football betting ID options, they typically opt for WhatsApp registration as it is quick and offers the convenience of direct support from the betting team.') !!}</p>
+            <p>{!! $page->section('what_is_p1', 'A <strong>Football Betting ID</strong> is an online betting account where users can bet on football matches and tournaments. This ID is useful for players who want to view betting markets for match winners, total goals, player performance, live betting, halftime scores and more.') !!}</p>
+            <p>{!! $page->section('what_is_p2', 'A trusted <strong>football betting panel ID</strong> provides comprehensive access to betting options, live odds, safe wallets, and quick withdrawals. A betting ID can organize all football betting activities from a single location — whether you are interested in Premier League games, Champions League games or international tournaments.') !!}</p>
+            <p>{!! $page->section('what_is_p3', 'Given that users will be looking for <strong>instant football betting ID</strong> options, they typically opt for WhatsApp registration as it is quick and offers the convenience of direct support from the betting team.') !!}</p>
             <div class="text-center mt-4">
                 <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get Your Online Football Betting ID Today') !!}</a>
             </div>
@@ -69,7 +69,7 @@
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <h3>{!! $page->section('benefit_1_title', 'Fast Registration') !!}</h3>
-                <p>{!! $page->section('benefit_1_text', 'Sign up on WhatsApp easily and quickly — no lengthy forms; obtain your football betting login ID within minutes.') !!}</p>
+                <p>{!! $page->section('benefit_1_text', 'Sign up on WhatsApp easily and quickly — no lengthy forms; obtain your <strong>football betting login ID</strong> within minutes.') !!}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -90,14 +90,14 @@
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
                 <h3>{!! $page->section('benefit_4_title', 'Mobile-Friendly Access') !!}</h3>
-                <p>{!! $page->section('benefit_4_text', 'Your betting ID account is optimized for mobile so you can bet live from anywhere.') !!}</p>
+                <p>{!! $page->section('benefit_4_text', 'Your <strong>betting ID India</strong> account is optimized for mobile so you can bet live from anywhere.') !!}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 </div>
                 <h3>{!! $page->section('benefit_5_title', 'Quick Account Activation') !!}</h3>
-                <p>{!! $page->section('benefit_5_text', 'Instant football betting ID — get your account information within practically no time after verification.') !!}</p>
+                <p>{!! $page->section('benefit_5_text', '<strong>Instant football betting ID</strong> — get your account information within practically no time after verification.') !!}</p>
             </div>
         </div>
     </div>
@@ -108,7 +108,7 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">{!! $page->section('how_title', 'How to Get Your <span class="text-gold">Football Betting ID</span> via WhatsApp') !!}</h2>
-            <p class="section-subtitle">{!! $page->section('how_subtitle', 'Getting your online football betting ID from Radhey Book is very simple — here are the steps.') !!}</p>
+            <p class="section-subtitle">{!! $page->section('how_subtitle', 'Getting your <strong>online football betting ID</strong> from Radhey Book is very simple — here are the steps.') !!}</p>
         </div>
         <div class="how-steps-grid">
             <div class="how-step">
@@ -129,7 +129,7 @@
             <div class="how-step">
                 <div class="how-step-num">04</div>
                 <h4>{!! $page->section('how_step_4_title', 'Receive Your Betting ID') !!}</h4>
-                <p>{!! $page->section('how_step_4_text', 'After verification, your online football betting login ID and password are sent immediately on WhatsApp.') !!}</p>
+                <p>{!! $page->section('how_step_4_text', 'After verification, your <strong>online football betting login ID</strong> and password are sent immediately on WhatsApp.') !!}</p>
             </div>
             <div class="how-step">
                 <div class="how-step-num">05</div>
@@ -148,7 +148,7 @@
     <div class="container">
         <div class="wa-cta-card">
             <h2 class="wa-cta-title">{!! $page->section('wa_cta_title', 'Football Betting <span class="text-gold">WhatsApp Number</span>') !!}</h2>
-            <p>{!! $page->section('wa_cta_text', 'For those looking for a trusted football betting WhatsApp number, Radhey Book provides a fast response for new registrations, deposits, withdrawals and account support. A trusted football bookie WhatsApp number enables users to prevent delays and get direct instructions to open a betting account.') !!}</p>
+            <p>{!! $page->section('wa_cta_text', 'For those looking for a trusted <strong>football betting WhatsApp number</strong>, Radhey Book provides a fast response for new registrations, deposits, withdrawals and account support. A trusted <strong>football bookie WhatsApp number</strong> enables users to prevent delays and get direct instructions to open a betting account.') !!}</p>
             <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('wa_cta_btn_text', 'Contact via Football Betting WhatsApp Number') !!}</a>
         </div>
     </div>
@@ -159,7 +159,7 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">{!! $page->section('tournaments_title', 'Best <span class="text-gold">Online Football Betting ID</span>') !!}</h2>
-            <p class="section-subtitle">{!! $page->section('tournaments_subtitle', 'For those looking for a reliable football match betting ID in India, Radhey Book is a great choice. Access major football tournaments and live betting markets all year round.') !!}</p>
+            <p class="section-subtitle">{!! $page->section('tournaments_subtitle', 'For those looking for a reliable <strong>football match betting ID</strong> in India, Radhey Book is a great choice. Access major football tournaments and live betting markets all year round.') !!}</p>
         </div>
         <div class="tournaments-grid">
             <div class="tournament-card">
@@ -167,7 +167,7 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/></svg>
                 </div>
                 <h3>{!! $page->section('tournament_1_title', 'FIFA World Cup') !!}</h3>
-                <p>{!! $page->section('tournament_1_text', 'Your FIFA World Cup betting ID gives complete access to the biggest football tournament in the world. Place bets on match wins, goals, top scorers, penalty outcomes and live in-play odds.') !!}</p>
+                <p>{!! $page->section('tournament_1_text', 'Your <strong>FIFA World Cup betting ID</strong> gives complete access to the biggest football tournament in the world. Place bets on match wins, goals, top scorers, penalty outcomes and live in-play odds.') !!}</p>
             </div>
             <div class="tournament-card">
                 <div class="tournament-icon">
@@ -195,7 +195,7 @@
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                 </div>
                 <h3>{!! $page->section('tournament_5_title', 'UEFA Euro Cup') !!}</h3>
-                <p>{!! $page->section('tournament_5_text', 'Your trusted football betting ID gives you access to European international football betting with seamless account access and secure payment assistance.') !!}</p>
+                <p>{!! $page->section('tournament_5_text', 'Your <strong>trusted football betting ID</strong> gives you access to European international football betting with seamless account access and secure payment assistance.') !!}</p>
             </div>
         </div>
         <div class="text-center mt-4">
@@ -244,7 +244,7 @@
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 </div>
                 <h3>{!! $page->section('why_wa_5_title', 'Instant Account Details') !!}</h3>
-                <p>{!! $page->section('why_wa_5_text', 'WhatsApp betting ID credentials are shared straight away with no long wait.') !!}</p>
+                <p>{!! $page->section('why_wa_5_text', '<strong>WhatsApp betting ID</strong> credentials are shared straight away with no long wait.') !!}</p>
             </div>
         </div>
         <div class="text-center mt-4">
@@ -293,7 +293,7 @@
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
                 </div>
                 <h3>{!! $page->section('security_5_title', 'Reliable Customer Support') !!}</h3>
-                <p>{!! $page->section('security_5_text', 'A reliable football betting ID provider ensures proper management of players and their accounts.') !!}</p>
+                <p>{!! $page->section('security_5_text', 'A reliable <strong>football betting ID provider</strong> ensures proper management of players and their accounts.') !!}</p>
             </div>
         </div>
     </div>
@@ -339,7 +339,7 @@
                     <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 </div>
                 <h3>{!! $page->section('withdraw_5_title', 'Easy Account Management') !!}</h3>
-                <p>{!! $page->section('withdraw_5_text', 'A football betting panel ID lets you effortlessly keep track of balances, transactions, and wallet.') !!}</p>
+                <p>{!! $page->section('withdraw_5_text', 'A <strong>football betting panel ID</strong> lets you effortlessly keep track of balances, transactions, and wallet.') !!}</p>
             </div>
         </div>
         <div class="text-center mt-4">
@@ -353,7 +353,7 @@
     <div class="container">
         <div class="page-intro">
             <h2 class="section-title">{!! $page->section('care_title', 'Football Betting <span class="text-gold">Customer Care Number</span>') !!}</h2>
-            <p>{!! $page->section('care_p1', 'A trustworthy football betting WhatsApp number is vital for those who wish to get quick responses without the bother of completing lengthy forms or sitting down for an email reply. Users can call for support to get their football betting login ID, payment procedures, live betting support and account updates within seconds.') !!}</p>
+            <p>{!! $page->section('care_p1', 'A trustworthy <strong>football betting WhatsApp number</strong> is vital for those who wish to get quick responses without the bother of completing lengthy forms or sitting down for an email reply. Users can call for support to get their <strong>football betting login ID</strong>, payment procedures, live betting support and account updates within seconds.') !!}</p>
             <p>{!! $page->section('care_p2', 'With Radhey Book a seamless betting experience is possible — register and access support through WhatsApp messaging. From its hassle-free registration process to the responsive WhatsApp support, Radhey Book ensures you have a seamless betting experience.') !!}</p>
         </div>
     </div>
@@ -391,12 +391,12 @@
             <h2 class="section-title">{!! $page->section('faq_title', 'Frequently Asked <span class="text-gold">Questions</span> (FAQs)') !!}</h2>
         </div>
         <div class="faq-list">
-            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_1_q', 'What is an Online Football Betting ID?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_1_a', 'An Online Football Betting ID is an account on a website where you bet on football games, leagues, and tournaments from a live betting platform.') !!}</p></div></div>
-            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_2_q', 'How can I get an instant football betting ID?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_2_a', 'Reach out via the official football betting WhatsApp number, and you can register easily and get your ID instantly.') !!}</p></div></div>
-            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_3_q', 'Is Radhey Book a trusted football betting site India users can access?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_3_a', 'For football fans seeking a trustworthy football betting platform in India, Radhey Book is the perfect option — providing a hassle-free betting experience, secure payment methods, quick support, and live betting markets.') !!}</p></div></div>
-            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_4_q', 'Can I get support through WhatsApp?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_4_a', 'Yes, users can reach the support team directly via the football betting WhatsApp number for registrations, deposits or withdrawals.') !!}</p></div></div>
+            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_1_q', 'What is an Online Football Betting ID?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_1_a', 'An <strong>Online Football Betting ID</strong> is an account on a website where you bet on football games, leagues, and tournaments from a live betting platform.') !!}</p></div></div>
+            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_2_q', 'How can I get an instant football betting ID?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_2_a', 'Reach out via the official <strong>football betting WhatsApp number</strong>, and you can register easily and get your ID instantly.') !!}</p></div></div>
+            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_3_q', 'Is Radhey Book a trusted football betting site India users can access?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_3_a', 'For football fans seeking a trustworthy <strong>football betting platform in India</strong>, Radhey Book is the perfect option — providing a hassle-free betting experience, secure payment methods, quick support, and live betting markets.') !!}</p></div></div>
+            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_4_q', 'Can I get support through WhatsApp?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_4_a', 'Yes, users can reach the support team directly via the <strong>football betting WhatsApp number</strong> for registrations, deposits or withdrawals.') !!}</p></div></div>
             <div class="faq-item"><button class="faq-question">{!! $page->section('faq_5_q', 'What tournaments can I bet on with my football match betting ID?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_5_a', 'You have access to betting markets for the FIFA World Cup, UEFA Champions League, Premier League, La Liga, Euro Cup and other football events globally.') !!}</p></div></div>
-            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_6_q', 'Why should I choose a trusted football betting ID provider?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_6_a', 'A trustworthy football betting ID gives users enhanced account security, easy withdrawals, swift customer support, and access to live football betting markets without any delays.') !!}</p></div></div>
+            <div class="faq-item"><button class="faq-question">{!! $page->section('faq_6_q', 'Why should I choose a trusted football betting ID provider?') !!}<span class="faq-toggle">+</span></button><div class="faq-answer"><p>{!! $page->section('faq_6_a', 'A trustworthy <strong>football betting ID</strong> gives users enhanced account security, easy withdrawals, swift customer support, and access to live football betting markets without any delays.') !!}</p></div></div>
         </div>
     </div>
 </section>
