@@ -58,7 +58,7 @@
                             {{ $item['label'] }}
                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.3s ease;"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </a>
-                        <ul class="dropdown-menu" style="position:absolute;top:100%;left:0;background:linear-gradient(135deg,#1a1a2e,#16213e);min-width:220px;border-radius:8px;padding:8px 0;box-shadow:0 10px 40px rgba(0,0,0,0.5);border:1px solid rgba(212,175,55,0.2);display:none;z-index:100;">
+                        <ul class="dropdown-menu" style="position:absolute;top:100%;left:0;background:linear-gradient(135deg,#1a1a2e,#16213e);min-width:220px;max-height:420px;overflow-y:auto;overscroll-behavior:contain;border-radius:8px;padding:8px 0;box-shadow:0 10px 40px rgba(0,0,0,0.5);border:1px solid rgba(212,175,55,0.2);display:none;z-index:100;">
                             @foreach($item['children'] as $child)
                                 @php $childActive = $menuActive($child['url'] ?? ''); @endphp
                                 <li><a href="{{ $child['url'] ?? '#' }}" target="{{ $child['target'] ?? '_self' }}"
@@ -153,6 +153,26 @@
         background: rgba(212,175,55,0.1);
         color: #d4af37 !important;
         padding-left: 25px;
+    }
+
+    /* Custom scrollbar for long dropdowns (desktop only — mobile uses inline list) */
+    .nav-dropdown .dropdown-menu::-webkit-scrollbar {
+        width: 6px;
+    }
+    .nav-dropdown .dropdown-menu::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.04);
+        border-radius: 8px;
+    }
+    .nav-dropdown .dropdown-menu::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #d4af37, #b8941f);
+        border-radius: 8px;
+    }
+    .nav-dropdown .dropdown-menu::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #f5d060, #d4af37);
+    }
+    .nav-dropdown .dropdown-menu {
+        scrollbar-width: thin;
+        scrollbar-color: #d4af37 rgba(255,255,255,0.04);
     }
 
     /* Desktop nav link hover */

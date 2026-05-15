@@ -25,8 +25,8 @@ class Page extends Model
      * Long-form content (paragraphs, list items, descriptions, FAQ answers) IS bolded.
      */
     private const NO_BOLD_PATTERNS = [
-        '/_btn(_|$)/',          // intro_btn_text, get_id_btn_text, …
-        '/_button(_|$)/',
+        '/_btn\d*(_|$)/',       // intro_btn_text, hero_btn1_text, get_id_btn_text, …
+        '/_button\d*(_|$)/',
         '/_badge(_|$)/',        // platform_X_badge, hero_slide_X_badge
         '/_label(_|$)/',        // stats_X_label
         '/_link(_|$)/',
