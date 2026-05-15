@@ -53,6 +53,9 @@ class SchemaBuilder
 
         // --- BreadcrumbList: Home > This Page (skip on the home page itself) ---
         if ($page->slug !== 'home') {
+            $breadcrumbName = self::clean(
+                ($sections['schema_breadcrumb_name'] ?? null) ?: $page->title
+            );
             $schemas[] = [
                 '@context' => 'https://schema.org/',
                 '@type'    => 'BreadcrumbList',
@@ -66,7 +69,7 @@ class SchemaBuilder
                     [
                         '@type'    => 'ListItem',
                         'position' => 2,
-                        'name'     => self::clean($page->title),
+                        'name'     => $breadcrumbName,
                         'item'     => $url,
                     ],
                 ],
@@ -97,11 +100,17 @@ class SchemaBuilder
                 $webPage['mainEntity'] = $decoded;
             }
         } elseif ($serviceDesc !== '') {
-            $webPage['mainEntity'] = [
+            $entity = [
                 '@type'       => $serviceType,
                 'name'        => $serviceName,
-                'description' => $serviceDesc,
             ];
+            // Optional serviceType qualifier (Schema.org Service field, e.g. "Online Betting ID Service").
+            $serviceTypeQualifier = trim($sections['schema_service_servicetype'] ?? '');
+            if ($serviceTypeQualifier !== '') {
+                $entity['serviceType'] = $serviceTypeQualifier;
+            }
+            $entity['description'] = $serviceDesc;
+            $webPage['mainEntity'] = $entity;
         }
 
         $schemas[] = $webPage;

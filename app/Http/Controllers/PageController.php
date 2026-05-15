@@ -47,6 +47,7 @@ class PageController extends Controller
     public function t20BettingId() { return $this->renderPage('t20-betting-id', 'pages.t20-betting-id'); }
     public function mahadevBookId() { return $this->renderPage('mahadev-book-id', 'pages.mahadev-book-id'); }
     public function whatsappBettingId() { return $this->renderPage('whatsapp-betting-id', 'pages.whatsapp-betting-id'); }
+    public function onlineFootballBettingId() { return $this->renderPage('online-football-betting-id', 'pages.online-football-betting-id'); }
     public function reddyAnnaBookId() { return $this->renderPage('reddy-anna-book-id', 'pages.reddy-anna-book-id'); }
     public function lordsExchangeId() { return $this->renderPage('lords-exchange-id', 'pages.lords-exchange-id'); }
     public function casinoBettingId() { return $this->renderPage('casino-betting-id', 'pages.casino-betting-id'); }

@@ -43,6 +43,7 @@ Route::get('/ipl-betting-id', [PageController::class, 'iplBettingId'])->name('ip
 Route::get('/t20-betting-id', [PageController::class, 't20BettingId'])->name('t20-betting-id');
 Route::get('/mahadev-book-id', [PageController::class, 'mahadevBookId'])->name('mahadev-book-id');
 Route::get('/whatsapp-betting-id', [PageController::class, 'whatsappBettingId'])->name('whatsapp-betting-id');
+Route::get('/online-football-betting-id', [PageController::class, 'onlineFootballBettingId'])->name('online-football-betting-id');
 Route::get('/reddy-anna-book-id', [PageController::class, 'reddyAnnaBookId'])->name('reddy-anna-book-id');
 Route::get('/lords-exchange-id', [PageController::class, 'lordsExchangeId'])->name('lords-exchange-id');
 Route::get('/casino-betting-id', [PageController::class, 'casinoBettingId'])->name('casino-betting-id');

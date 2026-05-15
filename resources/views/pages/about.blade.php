@@ -193,6 +193,71 @@
     </div>
 </section>
 
+{{-- RESPONSIBLE GAMING COMMITMENT --}}
+@if($page->section('show_responsible_gaming', '1') !== '0')
+<section class="section responsible-gaming-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{!! $page->section('responsible_gaming_title', 'Responsible <span class="text-gold">Gaming Commitment</span>') !!}</h2>
+            <p class="section-subtitle">{!! $page->section('responsible_gaming_intro', 'Radhey Book encourages responsible play and suggests that all customers play responsibly and within their means. Online betting should always be a fun activity — bettors are encouraged to:') !!}</p>
+        </div>
+        <div class="responsible-gaming-card">
+            <ul class="responsible-gaming-list">
+                <li>{!! $page->section('responsible_gaming_1', 'Set personal spending limits') !!}</li>
+                <li>{!! $page->section('responsible_gaming_2', 'Avoid excessive betting') !!}</li>
+                <li>{!! $page->section('responsible_gaming_3', 'Play responsibly') !!}</li>
+                <li>{!! $page->section('responsible_gaming_4', 'Take regular breaks') !!}</li>
+                <li>{!! $page->section('responsible_gaming_5', 'If it becomes stressful, get assistance') !!}</li>
+            </ul>
+            <p class="responsible-gaming-outro">{!! $page->section('responsible_gaming_outro', 'Responsible gaming helps create a safer, healthier online betting environment for all.') !!}</p>
+        </div>
+    </div>
+</section>
+<style>
+.responsible-gaming-section .responsible-gaming-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 32px 36px;
+    background: rgba(212,175,55,0.04);
+    border: 1px solid rgba(212,175,55,0.18);
+    border-radius: 14px;
+}
+.responsible-gaming-list { list-style: none; padding: 0; margin: 0 0 20px; }
+.responsible-gaming-list li {
+    position: relative;
+    padding: 10px 0 10px 36px;
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.responsible-gaming-list li:last-child { border-bottom: none; }
+.responsible-gaming-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #d4af37;
+    font-weight: 700;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(212,175,55,0.12);
+    border-radius: 50%;
+}
+.responsible-gaming-outro {
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+    margin: 0;
+    text-align: center;
+}
+@media (max-width: 700px) {
+    .responsible-gaming-section .responsible-gaming-card { padding: 24px 18px; }
+}
+</style>
+@endif
+
 {{-- CTA SECTION --}}
 <section class="section" id="cta" style="background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);">
     <div class="container">
