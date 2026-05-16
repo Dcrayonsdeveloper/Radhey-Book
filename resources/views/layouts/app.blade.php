@@ -44,7 +44,7 @@
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
 
     {{-- Favicon --}}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
@@ -220,7 +220,7 @@
         }
     </style>
     <script>
-        (function() {
+        function __initBonusTimer() {
             var storageKey = 'bonusTimerClosed_v2';
 
             if (sessionStorage.getItem(storageKey) === '1') {
@@ -270,7 +270,12 @@
 
             tick();
             setInterval(tick, 1000);
-        })();
+        }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(__initBonusTimer, { timeout: 2000 });
+        } else {
+            window.addEventListener('load', function() { setTimeout(__initBonusTimer, 300); });
+        }
     </script>
     @endif
 

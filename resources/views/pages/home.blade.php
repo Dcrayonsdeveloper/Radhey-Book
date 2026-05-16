@@ -8,7 +8,7 @@
     {{-- Preload the active hero slide image to dramatically improve LCP.
          Without this the browser only discovers the URL after CSS parses,
          delaying first paint of the hero by hundreds of ms. --}}
-    <link rel="preload" as="image" href="{{ asset('images/all banner/ipl banner.png') }}" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ asset('images/all banner/ipl banner.webp') }}" fetchpriority="high">
 @endpush
 
 @section('content')
@@ -17,7 +17,7 @@
 <section class="hero-section" id="hero">
     <div class="hero-carousel-wrapper">
         <div class="hero-slides">
-            <div class="hero-slide active" style="background: url('{{ asset('images/all banner/ipl banner.png') }}') center/cover no-repeat;">
+            <div class="hero-slide active" style="background: url('{{ asset('images/all banner/ipl banner.webp') }}') center/cover no-repeat;">
                 <div class="hero-slide-overlay" style="background: rgba(0,0,0,0.5);"></div>
                 <div class="hero-slide-content container">
                     <div class="hero-badge">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-slide" style="background: url('{{ asset('images/Artboard 2 radhe book banner.png') }}') center/cover no-repeat;">
+            <div class="hero-slide" data-bg="{{ asset('images/New folder/banner-football.webp') }}" style="background-color: #1a1a2e;">
                 <div class="hero-slide-overlay" style="background: rgba(0,0,0,0.5);"></div>
                 <div class="hero-slide-content container">
                     <div class="hero-badge">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-slide" style="background: url('{{ asset('images/casino banner.png') }}') center/cover no-repeat;">
+            <div class="hero-slide" data-bg="{{ asset('images/casino banner.webp') }}" style="background-color: #1a1a2e;">
                 <div class="hero-slide-overlay" style="background: rgba(0,0,0,0.5);"></div>
                 <div class="hero-slide-content container">
                     <div class="hero-badge">
@@ -94,6 +94,26 @@
         </div>
     </div>
 </section>
+
+{{-- Defer hero slides 2-3 background load until after first paint --}}
+<script>
+(function() {
+    function loadDeferredBgs() {
+        document.querySelectorAll('.hero-slide[data-bg]').forEach(function(el) {
+            var url = el.getAttribute('data-bg');
+            if (url) {
+                el.style.background = "url('" + url + "') center/cover no-repeat, #1a1a2e";
+                el.removeAttribute('data-bg');
+            }
+        });
+    }
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadDeferredBgs, { timeout: 1500 });
+    } else {
+        window.addEventListener('load', function() { setTimeout(loadDeferredBgs, 200); });
+    }
+})();
+</script>
 
 {{-- TRUST BADGES --}}
 @if($page->section('show_trust_badges', '1') !== '0')
@@ -159,12 +179,12 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/virat.jpg') }}" alt="Radhey Book - India's Leading Online Betting ID Provider" loading="lazy" decoding="async">
+                <img src="{{ asset('images/New folder/longfootball.webp') }}" alt="India's Trusted Online Football Betting ID Provider" width="736" height="1046" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="intro-content">
-                    <p>{!! $page->section('intro_p1', 'Welcome to Radhey Book, India\'s leading online betting platform, where we help people across India to create their IPL betting ID. Without any stressful and hassle process making it smooth for the users to get their IDs. Our main focus is on providing a premium and reliable betting experience to the users who want to place bets on cricket matches, casino, and other sports games. We are known for our secure and trustworthy systems, the platforms we collaborate with are known to be reliable and highly secure, so users can watch live matches and engage in online betting in cricket without any problems or inconveniences.') !!}</p>
-                    <p>{!! $page->section('intro_p2', 'No complicated applications and third parties are needed. Users can get simple, verified online cricket ID via the online betting ID number that gives direct access to major live cricket tournaments, games, and other sports. Deposits and withdrawals are easy with convenient payment options like UPI, Paytm, and Google Pay. If you face any issues while using your cricket ID, our dedicated support team is available 24/7 to assist you promptly.') !!}</p>
+                    <p>{!! $page->section('intro_p1', 'Welcome to Radhey Book, India\'s leading online betting platform, where we help people across India to create their <strong>Online football betting ID</strong>. Without any stressful and hassle process making it smooth for the users to get their IDs. Our main focus is on providing a premium and reliable betting experience to the users who want to place bets on various football betting tournaments. We are known for our secure and trustworthy systems, the platforms we collaborate with are known to be reliable and highly secure, so users can watch live matches and engage in online betting without any problems or inconveniences.') !!}</p>
+                    <p>{!! $page->section('intro_p2', 'No complicated applications and third parties are needed. Users can get a simple, verified <strong>football exchange ID</strong> via the <strong>football betting whatsapp number</strong> that gives direct access to major live football, cricket, and other tournaments. Deposits and withdrawals are easy with convenient payment options like UPI, Paytm, and Google Pay. If you face any issues while using your Football Betting ID, our dedicated support team is available 24/7 to assist you promptly.') !!}</p>
                     <div class="intro-pillars">
                         <span>100% Trust</span>
                         <span>24/7 WhatsApp Support</span>
@@ -186,11 +206,11 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">{!! $page->section('why_2026_title', 'Why <span class="text-gold">2026</span> is the Best Year to Start Betting with Online Cricket ID') !!}</h2>
-            <p class="section-subtitle">{!! $page->section('why_2026_subtitle', 'Get your IPL Betting ID & T20 Betting ID now and get ready to bet on IPL 2026 and the T20 World Cup this betting season. One ID gives you seamless access to all major matches for ODIs, Tests, and T20s on a single platform.') !!}</p>
+            <p class="section-subtitle">{!! $page->section('why_2026_subtitle', 'The football season in 2026 will be a huge season for football supporters and bookmakers around the globe. As football tournaments like FIFA, UEFA, international tournaments, football leagues, and football exchange betting are catching up in the game, it is the ideal time to obtain your <strong>football betting ID</strong> and savor undisturbed live football betting markets.') !!}</p>
         </div>
         <div class="split-row image-right">
             <div class="split-media">
-                <img src="{{ asset('images/T-20 World Cup.png') }}" alt="T20 World Cup 2026 Betting" loading="lazy" decoding="async">
+                <img src="{{ asset('images/New folder/Artboard 3.jpg.jpeg') }}" alt="FIFA World Cup 2026 Football Betting" width="473" height="475" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="why-2026-card">
@@ -203,7 +223,7 @@
                         <li>{!! $page->section('why_2026_li_5', 'Built-in responsible gaming controls') !!}</li>
                         <li>{!! $page->section('why_2026_li_6', 'AI-powered insights for smarter decisions') !!}</li>
                     </ul>
-                    <p class="why-2026-footer">{!! $page->section('why_2026_footer', 'No hassle, no time-wasting — all you need is fast access to all the big games. Get your Cricket ID now and stay up to date.') !!}</p>
+                    <p class="why-2026-footer">{!! $page->section('why_2026_footer', 'No hassle, no time-wasting — all you need is fast access to all the big games. <strong>Get your online football betting ID now and stay up to date.</strong>') !!}</p>
                 </div>
             </div>
         </div>
@@ -220,13 +240,13 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/cricket.png') }}" alt="What is IPL Betting ID - Cricket" loading="lazy" decoding="async">
+                <img src="{{ asset('images/New folder/Artboard 3 copy.jpg.jpeg') }}" alt="What is a Football Betting ID" width="473" height="475" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="what-is-content">
-                    <p>{!! $page->section('what_is_p1', 'IPL Betting ID acts as your key to betting platforms, which provides you with one dashboard to see matches, odds, and bets, as well as manage finances.') !!}</p>
-                    <p>{!! $page->section('what_is_p2', 'It works across IPL, T20s, international matches and Test cricket and keeps your data safe. A reliable online cricket betting ID simplifies the whole process and makes it well-structured and secure.') !!}</p>
-                    <p>{!! $page->section('what_is_p3', 'Whether you are a cricket enthusiast looking for a trusted and reliable online cricket ID or someone who enjoys casino games, getting your ID is the very first step to secure betting in India.') !!}</p>
+                    <p>{!! $page->section('what_is_p1', 'A <strong>football betting ID</strong> is a safe login ID that provides users with access to football exchange platforms and wager on football matches, FIFA tournaments, and live football markets.') !!}</p>
+                    <p>{!! $page->section('what_is_p2', 'A secure <strong>online football betting ID</strong> streamlines football betting and offers a safe betting environment for players to enjoy football betting globally.') !!}</p>
+                    <p>{!! $page->section('what_is_p3', 'If you are looking to engage in FIFA live betting, UEFA matches, or even domestic football leagues, a trusted <strong>football exchange ID</strong> is a crucial initial step towards a secure football betting experience.') !!}</p>
                     <div class="mt-4">
                         <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get Your IPL Betting ID Today') !!}</a>
                     </div>
@@ -243,7 +263,7 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">{!! $page->section('why_need_title', 'Why Do You Need an <span class="text-gold">IPL Betting ID</span>?') !!}</h2>
-            <p class="section-subtitle">{!! $page->section('why_need_subtitle', 'To bet on IPL and any other cricket matches, you need a secure and verified IPL betting ID or online cricket ID — without it, live markets stay locked. Getting your ID with Radhey Book opens doors to top exchanges, sports, games, and platforms safely.') !!}</p>
+            <p class="section-subtitle">{!! $page->section('why_need_subtitle', 'Players must have a trusted and legitimate <strong>football exchange ID</strong> to enter into the live football betting market and FIFA World Cup betting platforms. Football betting markets are only accessible when the ID is active. A trusted <strong>football betting ID</strong> offers several advantages.') !!}</p>
         </div>
         <div class="why-need-carousel" id="whyNeedCarousel">
             <button class="why-need-carousel-btn why-need-carousel-prev" type="button" aria-label="Previous">&#10094;</button>
@@ -470,13 +490,13 @@
         <div class="trust-cta-card">
             <div class="split-row image-right">
                 <div class="split-media">
-                    <img src="{{ asset('images/homepage img.png') }}" alt="Trusted IPL Betting ID Provider" loading="lazy" decoding="async">
+                    <img src="{{ asset('images/homepage img.webp') }}" alt="Trusted IPL Betting ID Provider" loading="lazy" decoding="async">
                 </div>
                 <div class="split-content">
                     <div class="trust-cta-content">
                         <h2 class="trust-cta-title">{!! $page->section('trust_cta_title', 'Are You Looking For A Secure and Trusted <span class="text-gold">IPL Betting ID Provider</span>?') !!}</h2>
-                        <p>{!! $page->section('trust_cta_p1', 'Radhey Book is India\'s most trusted IPL Betting ID Provider and delivers 100% secure and verified online cricket IDs via quick WhatsApp setup, secure access, and fast UPI withdrawals. You can bet on IPL 2026, the T20 World Cup, and international matches with ease and comfort.') !!}</p>
-                        <p>{!! $page->section('trust_cta_p2', 'With over 200,000 active users, authentic accounts, immediate activation with no delays, and verified user reviews, we are a trustworthy option when it comes to an online betting ID.') !!}</p>
+                        <p>{!! $page->section('trust_cta_p1', 'One of the crucial factors in safe football betting is finding a secure and reliable <strong>football betting ID provider</strong>. We offer trustworthy and authentic football exchange IDs that are activated immediately and have safe football betting access.') !!}</p>
+                        <p>{!! $page->section('trust_cta_p2', 'Fast activation process, secure systems and reliable customer assistance are some of the factors that make our football exchange services trustworthy and preferred by thousands of football bettors across India.') !!}</p>
                         <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('trust_cta_btn_text', 'Get Your Trusted IPL Betting ID Now') !!}</a>
                     </div>
                 </div>
@@ -696,7 +716,7 @@
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#feba0b" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </div>
                 <h3>{!! $page->section('why_1_title', 'Instant ID Activation') !!}</h3>
-                <p>{!! $page->section('why_1_text', 'Get your IPL betting ID activated within minutes via WhatsApp. No lengthy registration process.') !!}</p>
+                <p>{!! $page->section('why_1_text', 'Users can receive their <strong>football exchange ID</strong> within minutes through WhatsApp support. No lengthy registration process.') !!}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -710,7 +730,7 @@
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#feba0b" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
                 </div>
                 <h3>{!! $page->section('why_3_title', '24/7 WhatsApp Support') !!}</h3>
-                <p>{!! $page->section('why_3_text', 'Our dedicated support team is available round the clock via the IPL Betting ID Number to assist you with any queries.') !!}</p>
+                <p>{!! $page->section('why_3_text', 'Our dedicated support team is available round the clock via <strong>live football betting id</strong> to assist you with any queries.') !!}</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -771,7 +791,7 @@
                     <div class="step-item steps-carousel-slide">
                         <div class="step-num">04</div>
                         <h4>{!! $page->section('how_step_4_title', 'Get Your ID') !!}</h4>
-                        <p>{!! $page->section('how_step_4_text', 'After verification, your Instant Cricket ID will be created and shared with you.') !!}</p>
+                        <p>{!! $page->section('how_step_4_text', 'After verification, your <strong>Football Exchange ID</strong> will be created and shared with you.') !!}</p>
                     </div>
                     <div class="step-item steps-carousel-slide">
                         <div class="step-num">05</div>
@@ -936,12 +956,12 @@
             <div class="how-id-works-card">
                 <div class="how-id-works-num">01</div>
                 <h4>{!! $page->section('how_id_1_title', 'Choose from a Trusted Platform') !!}</h4>
-                <p>{!! $page->section('how_id_1_text', 'After you contact the IPL Betting ID Provider on WhatsApp, you will be issued multiple exchange ID options via Radhey Book — Sky Exchange, Lords Exchange, Lotus Exchange, Fairplay etc. Choose one from them.') !!}</p>
+                <p>{!! $page->section('how_id_1_text', 'After you contact the team on WhatsApp, you will be issued multiple exchange ID options via Radhey Book like <strong>Sky Exchange</strong>, <strong>Lords Exchange</strong>, <strong>Lotus Exchange</strong>, <strong>Fairplay</strong> etc. You need to choose one from them.') !!}</p>
             </div>
             <div class="how-id-works-card">
                 <div class="how-id-works-num">02</div>
                 <h4>{!! $page->section('how_id_2_title', 'Get Your Login Credentials') !!}</h4>
-                <p>{!! $page->section('how_id_2_text', 'After you select your desired platform, you will receive an Online Cricket ID link. Use it to enter the login ID and password provided after your deposit.') !!}</p>
+                <p>{!! $page->section('how_id_2_text', 'After you select your desired platform to bet on, you will receive an <strong>Online Football ID</strong> link. You can use it to enter the login ID and password provided by the <strong>football betting ID provider</strong> after your deposit.') !!}</p>
             </div>
             <div class="how-id-works-card">
                 <div class="how-id-works-num">03</div>
@@ -950,13 +970,13 @@
             </div>
             <div class="how-id-works-card">
                 <div class="how-id-works-num">04</div>
-                <h4>{!! $page->section('how_id_4_title', 'Choose a Cricket Match') !!}</h4>
-                <p>{!! $page->section('how_id_4_text', 'Your Cricket ID dashboard displays various match and tournament options. The "Cricket" option lets you access international tournaments like IPL, T20, Ranji, CPL, DPL and more.') !!}</p>
+                <h4>{!! $page->section('how_id_4_title', 'Select a Football Match') !!}</h4>
+                <p>{!! $page->section('how_id_4_text', 'Your Football ID dashboard displays various match and tournament options for your selection. The "Football" option allows users to access international tournaments which include World Cup matches, EPL, La Liga, and other International football matches.') !!}</p>
             </div>
             <div class="how-id-works-card">
                 <div class="how-id-works-num">05</div>
                 <h4>{!! $page->section('how_id_5_title', 'Place Your Bet') !!}</h4>
-                <p>{!! $page->section('how_id_5_text', 'Select a match (e.g. ENG vs AUS), then choose your bet type — match winner, toss winner, or place a bet on the outcome using Lay and Back options.') !!}</p>
+                <p>{!! $page->section('how_id_5_text', 'Select a match, for example Real Madrid CF vs Manchester City FC. Then choose your bet type such as match winner or toss winner, or simply place a bet on the match outcome using Lay and Back options.') !!}</p>
             </div>
             <div class="how-id-works-card">
                 <div class="how-id-works-num">06</div>
@@ -1268,6 +1288,124 @@
 </style>
 @endif
 
+{{-- BENEFITS OF USING AN ONLINE FOOTBALL BETTING ID --}}
+@if($page->section('show_benefits', '1') !== '0')
+<section class="section benefits-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{!! $page->section('benefits_title', 'Benefits of Using an <span class="text-gold">Online Football Betting ID</span>') !!}</h2>
+            <p class="section-subtitle">{!! $page->section('benefits_subtitle', 'There are several benefits of using a trusted football betting ID for football enthusiasts.') !!}</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefits-card">
+                <div class="benefits-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h4>{!! $page->section('benefit_1_title', 'Safe Betting Environment') !!}</h4>
+                <p>{!! $page->section('benefit_1_text', 'Secure systems provide protection for user information and transactions.') !!}</p>
+            </div>
+            <div class="benefits-card">
+                <div class="benefits-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+                </div>
+                <h4>{!! $page->section('benefit_2_title', 'Fast Deposits & Withdrawals') !!}</h4>
+                <p>{!! $page->section('benefit_2_text', 'Quick payment processing means users enjoy a seamless football betting experience.') !!}</p>
+            </div>
+            <div class="benefits-card">
+                <div class="benefits-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                </div>
+                <h4>{!! $page->section('benefit_3_title', 'Access to Global Football Matches') !!}</h4>
+                <p>{!! $page->section('benefit_3_text', 'Bet on football tournaments worldwide — FIFA, UEFA, EPL, La Liga and more.') !!}</p>
+            </div>
+            <div class="benefits-card">
+                <div class="benefits-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h4>{!! $page->section('benefit_4_title', 'Live Football Betting') !!}</h4>
+                <p>{!! $page->section('benefit_4_text', 'Enjoy live football exchange betting in real-time during matches.') !!}</p>
+            </div>
+            <div class="benefits-card">
+                <div class="benefits-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                </div>
+                <h4>{!! $page->section('benefit_5_title', '24/7 Support') !!}</h4>
+                <p>{!! $page->section('benefit_5_text', 'Customer support remains available anytime — registration, deposits, withdrawals.') !!}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+.benefits-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.benefits-card { padding: 22px 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.18); border-radius: 12px; text-align: center; transition: transform 0.25s ease, border-color 0.25s ease; cursor: pointer; }
+.benefits-card:hover { transform: translateY(-4px); border-color: rgba(212,175,55,0.45); }
+.benefits-icon { margin: 0 auto 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(212,175,55,0.08); border-radius: 50%; }
+.benefits-card h4 { color: #fff; font-size: 15px; margin-bottom: 8px; }
+.benefits-card p { color: rgba(255,255,255,0.75); font-size: 13.5px; line-height: 1.65; margin: 0; }
+@media (max-width: 1024px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .benefits-grid { grid-template-columns: 1fr; } }
+</style>
+@endif
+
+{{-- TIPS FOR SAFE FOOTBALL BETTING --}}
+@if($page->section('show_safety_tips', '1') !== '0')
+<section class="section safety-tips-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{!! $page->section('safety_tips_title', 'Tips for <span class="text-gold">Safe Football Betting</span>') !!}</h2>
+            <p class="section-subtitle">{!! $page->section('safety_tips_subtitle', 'When betting on football, always do it responsibly.') !!}</p>
+        </div>
+        <div class="safety-tips-list">
+            <div class="safety-tip-item">
+                <div class="safety-tip-num">01</div>
+                <div>
+                    <h4>{!! $page->section('safety_tip_1_title', 'Set a Budget') !!}</h4>
+                    <p>{!! $page->section('safety_tip_1_text', 'Don\'t use money that you can\'t afford to spend.') !!}</p>
+                </div>
+            </div>
+            <div class="safety-tip-item">
+                <div class="safety-tip-num">02</div>
+                <div>
+                    <h4>{!! $page->section('safety_tip_2_title', 'Avoid Emotional Betting') !!}</h4>
+                    <p>{!! $page->section('safety_tip_2_text', 'Never make an emotional bet while watching a game.') !!}</p>
+                </div>
+            </div>
+            <div class="safety-tip-item">
+                <div class="safety-tip-num">03</div>
+                <div>
+                    <h4>{!! $page->section('safety_tip_3_title', 'Analyze Football Statistics') !!}</h4>
+                    <p>{!! $page->section('safety_tip_3_text', 'Spend time researching teams, form, and head-to-head stats before betting.') !!}</p>
+                </div>
+            </div>
+            <div class="safety-tip-item">
+                <div class="safety-tip-num">04</div>
+                <div>
+                    <h4>{!! $page->section('safety_tip_4_title', 'Use Trusted Football Betting IDs') !!}</h4>
+                    <p>{!! $page->section('safety_tip_4_text', 'Only use verified and secure football exchange IDs.') !!}</p>
+                </div>
+            </div>
+            <div class="safety-tip-item">
+                <div class="safety-tip-num">05</div>
+                <div>
+                    <h4>{!! $page->section('safety_tip_5_title', 'Take Breaks') !!}</h4>
+                    <p>{!! $page->section('safety_tip_5_text', 'Bet responsibly and avoid excessive or back-to-back betting sessions.') !!}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+.safety-tips-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+.safety-tip-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.18); border-radius: 12px; transition: border-color 0.25s ease; }
+.safety-tip-item:hover { border-color: rgba(212,175,55,0.45); }
+.safety-tip-num { flex: 0 0 auto; width: 38px; height: 38px; line-height: 38px; text-align: center; border-radius: 10px; background: linear-gradient(135deg, #d4af37, #f5d060); color: #1a1a2e; font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 14px; }
+.safety-tip-item h4 { color: #fff; font-size: 16px; margin: 2px 0 6px; }
+.safety-tip-item p { color: rgba(255,255,255,0.78); font-size: 14px; line-height: 1.65; margin: 0; }
+@media (max-width: 768px) { .safety-tips-list { grid-template-columns: 1fr; } }
+</style>
+@endif
+
 {{-- FREEZE BUTTON / CUSTOMER CARE --}}
 @if($page->section('show_customer_care', '1') !== '0')
 <section class="section customer-care-section" id="customer-care">
@@ -1289,7 +1427,7 @@
                     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#feba0b" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
                 <h3>{!! $page->section('care_title', 'How to Contact Radhey Book Support') !!}</h3>
-                <p>{!! $page->section('care_text', 'Need help with your account or your Online Betting ID? Our 24/7 support team is reachable via WhatsApp, call support, or live chat for quick assistance with registration, deposits and general queries. Get step-by-step help via the IPL Betting ID number for a smooth, secure, hassle-free betting experience.') !!}</p>
+                <p>{!! $page->section('care_text', 'If you need help with your account or with your <strong>Online Betting ID</strong>, users can contact the support team available 24/7 via the <strong>football betting whatsapp number</strong>. Radhey Book support is available through multiple channels — WhatsApp, call support, or live chat for quick assistance with registration, deposits, and general queries anytime. For users with a <strong>Football Betting ID</strong> looking for assistance, you can reach out to the support team via the <strong>betting ID number</strong>. They provide quick and reliable help, guide you step-by-step, and resolve issues efficiently to ensure a smooth, secure, and hassle-free betting experience at all times.') !!}</p>
                 <div class="care-contact">
                     <span class="care-phone">{!! $page->section('care_phone', '+91 79017 12857') !!}</span>
                     <span class="care-email">{!! $page->section('care_email', 'support@radheybook.com') !!}</span>
