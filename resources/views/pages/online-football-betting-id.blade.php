@@ -20,7 +20,7 @@
                     <h1 class="hero-title">{!! $page->section('hero_title', 'Online Football Betting ID – Get <span class="text-gold">Instant Football Betting ID</span> in India') !!}</h1>
                     <p class="hero-subtitle">{!! $page->section('hero_subtitle', 'Register via WhatsApp, get activated in minutes, bet on FIFA, UEFA, EPL, La Liga and more.') !!}</p>
                     <div class="hero-cta">
-                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('hero_btn1_text', 'Get Your Football Betting ID') !!}</a>
+                        <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('hero_btn1_text', 'Get Your Football Betting ID') !!}</a>
                         <a href="#how-to-get" class="btn btn-outline-gold btn-lg">{!! $page->section('hero_btn2_text', 'How It Works') !!}</a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
             <p>{!! $page->section('what_is_p2', 'A trusted <strong>football betting panel ID</strong> provides comprehensive access to betting options, live odds, safe wallets, and quick withdrawals. A betting ID can organize all football betting activities from a single location — whether you are interested in Premier League games, Champions League games or international tournaments.') !!}</p>
             <p>{!! $page->section('what_is_p3', 'Given that users will be looking for <strong>instant football betting ID</strong> options, they typically opt for WhatsApp registration as it is quick and offers the convenience of direct support from the betting team.') !!}</p>
             <div class="text-center mt-4">
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('what_is_btn_text', 'Get Your Online Football Betting ID Today') !!}</a>
+                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('what_is_btn_text', 'Get Your Online Football Betting ID Today') !!}</a>
             </div>
         </div>
     </div>
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('how_btn_text', 'Get Your Online Football Betting ID Today') !!}</a>
+            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20an%20Online%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('how_btn_text', 'Get Your Online Football Betting ID Today') !!}</a>
         </div>
     </div>
 </section>
@@ -149,7 +149,7 @@
         <div class="wa-cta-card">
             <h2 class="wa-cta-title">{!! $page->section('wa_cta_title', 'Football Betting <span class="text-gold">WhatsApp Number</span>') !!}</h2>
             <p>{!! $page->section('wa_cta_text', 'For those looking for a trusted <strong>football betting WhatsApp number</strong>, Radhey Book provides a fast response for new registrations, deposits, withdrawals and account support. A trusted <strong>football bookie WhatsApp number</strong> enables users to prevent delays and get direct instructions to open a betting account.') !!}</p>
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('wa_cta_btn_text', 'Contact via Football Betting WhatsApp Number') !!}</a>
+            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('wa_cta_btn_text', 'Contact via Football Betting WhatsApp Number') !!}</a>
         </div>
     </div>
 </section>
@@ -199,7 +199,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20to%20bet%20on%20Football" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('tournaments_btn_text', 'Bet on Football Tournaments Today') !!}</a>
+            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20to%20bet%20on%20Football" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('tournaments_btn_text', 'Bet on Football Tournaments Today') !!}</a>
         </div>
     </div>
 </section>
@@ -248,7 +248,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Live%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_wa_btn_text', 'Get Your Live Football Betting ID Now') !!}</a>
+            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Live%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('why_wa_btn_text', 'Get Your Live Football Betting ID Now') !!}</a>
         </div>
     </div>
 </section>
@@ -343,7 +343,7 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20Panel%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('withdraw_btn_text', 'Login to Your Football Betting Panel ID Now') !!}</a>
+            <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20Panel%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('withdraw_btn_text', 'Login to Your Football Betting Panel ID Now') !!}</a>
         </div>
     </div>
 </section>
@@ -378,7 +378,7 @@
             </ul>
             <p class="why-list-footer">{!! $page->section('why_choose_footer', 'If you\'re looking for a trustworthy website for placing bets on football, Radhey Book is a great option offering quick customer support and easy account management.') !!}</p>
             <div class="text-center mt-3">
-                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{!! $page->section('why_choose_btn_text', 'Get Your Football Betting ID Today via Radhey Book') !!}</a>
+                <a href="https://wa.me/{{ $siteSettings['whatsapp_number'] ?? '917901712857' }}?text=Hi%20I%20want%20a%20Football%20Betting%20ID" class="btn btn-gold btn-lg" target="_blank" rel="noopener nofollow">{!! $page->section('why_choose_btn_text', 'Get Your Football Betting ID Today via Radhey Book') !!}</a>
             </div>
         </div>
     </div>
