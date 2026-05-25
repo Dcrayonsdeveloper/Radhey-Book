@@ -55,7 +55,7 @@
 
                 <div class="form-group full-width">
                     <label>Content *</label>
-                    <textarea name="content" class="form-control" rows="15" required>{{ old('content', $blog->content) }}</textarea>
+                    <textarea name="content" class="form-control" rows="15">{{ old('content', $blog->content) }}</textarea>
                     <span class="form-hint">HTML tags are supported.</span>
                     @error('content')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
