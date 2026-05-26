@@ -85,8 +85,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Page management
         Route::get('/pages', [AdminPageController::class, 'index'])->name('pages.index');
+        Route::get('/pages/create', [AdminPageController::class, 'create'])->name('pages.create');
+        Route::post('/pages', [AdminPageController::class, 'store'])->name('pages.store');
         Route::get('/pages/{page}/edit', [AdminPageController::class, 'edit'])->name('pages.edit');
         Route::put('/pages/{page}', [AdminPageController::class, 'update'])->name('pages.update');
+        Route::delete('/pages/{page}', [AdminPageController::class, 'destroy'])->name('pages.destroy');
 
         // Blog management
         Route::get('/blog', [AdminBlogController::class, 'index'])->name('blog.index');
@@ -120,3 +123,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/settings/password', [SettingController::class, 'changePassword'])->name('settings.password');
     });
 });
+
+// Catch-all for admin-created pages. Must stay LAST so explicit routes above win.
+// Regex only matches simple kebab-case slugs to avoid intercepting asset paths.
+Route::get('/{slug}', [PageController::class, 'dynamic'])
+    ->where('slug', '[a-z0-9][a-z0-9-]*')
+    ->name('page.dynamic');

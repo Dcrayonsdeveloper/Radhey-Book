@@ -106,6 +106,57 @@ class PageController extends Controller
         return redirect()->route('admin.pages.edit', $page)->with('success', 'Page updated successfully.');
     }
 
+    public function create()
+    {
+        return view('admin.pages.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|regex:/^[a-z0-9][a-z0-9-]*$/|unique:pages,slug',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:1000',
+            'meta_keywords' => 'nullable|string|max:500',
+            'content' => 'nullable|string|max:200000',
+        ], [
+            'slug.regex' => 'Slug must be lowercase, start with a letter or number, and contain only letters, numbers, and hyphens.',
+            'slug.unique' => 'A page with this slug already exists.',
+        ]);
+
+        $sections = [];
+        if (!empty($validated['content'])) {
+            $sections['content'] = Purifier::clean($validated['content'], 'page-content');
+        }
+
+        $page = Page::create([
+            'slug' => $validated['slug'],
+            'title' => $validated['title'],
+            'meta_title' => $validated['meta_title'] ?? null,
+            'meta_description' => $validated['meta_description'] ?? null,
+            'meta_keywords' => $validated['meta_keywords'] ?? null,
+            'sections' => $sections,
+            'is_active' => true,
+        ]);
+
+        return redirect()->route('admin.pages.edit', $page)->with('success', 'Page created. You can now add content sections.');
+    }
+
+    public function destroy(Page $page)
+    {
+        // Block destruction of pages tied to hardcoded blade templates — those
+        // have a fixed slug expected by the public route and removing the DB row
+        // would only break the menu / meta, not the page itself.
+        $protectedSlugs = ['home', 'about', 'cricket', 'casino', 'football-betting', 'tennis-betting', 'aviator'];
+        if (in_array($page->slug, $protectedSlugs, true)) {
+            return redirect()->route('admin.pages.index')->with('error', "The '{$page->slug}' page is tied to a built-in template and cannot be deleted.");
+        }
+
+        $page->delete();
+        return redirect()->route('admin.pages.index')->with('success', "Page '{$page->title}' deleted.");
+    }
+
     private function getSectionDefaults(string $slug): array
     {
         $defaults = [

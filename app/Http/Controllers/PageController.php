@@ -26,6 +26,16 @@ class PageController extends Controller
         ]);
     }
 
+    /**
+     * Catch-all for admin-created pages without a dedicated blade. If the slug
+     * exists in the pages table and is active, render the generic template.
+     * Otherwise 404 — the regex constraint already filters out asset paths.
+     */
+    public function dynamic(string $slug)
+    {
+        return $this->renderPage($slug, 'pages.dynamic');
+    }
+
     public function home() { return $this->renderPage('home', 'pages.home'); }
     public function about() { return $this->renderPage('about', 'pages.about'); }
     public function contact() { return $this->renderPage('contact', 'pages.contact'); }

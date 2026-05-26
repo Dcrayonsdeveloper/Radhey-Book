@@ -2,7 +2,10 @@
 @section('title', 'Pages')
 
 @section('content')
-<p style="color: #b8b8b8; font-size: 14px; margin-bottom: 24px;">Manage your website pages - edit SEO meta data and page content sections.</p>
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px; gap: 16px; flex-wrap: wrap;">
+    <p style="color: #b8b8b8; font-size: 14px; margin: 0;">Manage your website pages - edit SEO meta data and page content sections.</p>
+    <a href="{{ route('admin.pages.create') }}" class="btn btn-gold">+ Add New Page</a>
+</div>
 
 <div class="panel">
     <div class="table-wrapper">
@@ -30,7 +33,13 @@
                     </td>
                     <td style="white-space: nowrap; font-size: 13px;">{{ $page->updated_at->format('M d, Y') }}</td>
                     <td>
-                        <a href="{{ route('admin.pages.edit', $page) }}" class="btn btn-sm btn-edit">Edit</a>
+                        <div style="display:flex; gap:6px;">
+                            <a href="{{ route('admin.pages.edit', $page) }}" class="btn btn-sm btn-edit">Edit</a>
+                            <form method="POST" action="{{ route('admin.pages.destroy', $page) }}" style="display:inline;" onsubmit="return confirm('Delete page &quot;{{ $page->title }}&quot;? This cannot be undone.');">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @empty
