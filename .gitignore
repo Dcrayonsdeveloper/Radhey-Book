@@ -25,3 +25,17 @@ Thumbs.db
 /.claude
 /database/database.sqlite
 /database/database.sqlite-journal
+
+# Reference docs / content briefs — not for git
+*.docx
+*.bak
+*.bak.*
+
+# SEO research outputs
+/public/radhey_seo_bugs/
+/public/radhey_page_fields_catalog.xlsx
+/public/radheybook.com_*.xlsx
+/public/WhatsApp*.zip
+
+# Prod runtime uploads (live uploads dir on the server)
+/public/uploads/
