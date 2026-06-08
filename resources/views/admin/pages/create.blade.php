@@ -51,9 +51,9 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <label>Body Content (HTML)</label>
-                    <textarea name="content" class="form-control" rows="12" placeholder="HTML markup for the page body. You can add more sections later via the edit screen.">{{ old('content') }}</textarea>
-                    <span class="form-hint">HTML allowed. Use <code>&lt;h2&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code> etc.</span>
+                    <label>Body Content</label>
+                    <textarea name="content" class="form-control" rows="15" placeholder="Page body content. You can add more sections later via the edit screen.">{{ old('content') }}</textarea>
+                    <span class="form-hint">HTML tags are supported for formatting.</span>
                     @error('content')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
             </div>
@@ -68,7 +68,18 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
 <script>
+    tinymce.init({
+        selector: 'textarea[name="content"]',
+        plugins: 'lists link image code table',
+        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
+        height: 400,
+        skin: 'oxide-dark',
+        content_css: 'dark',
+        menubar: false,
+    });
+
     // Auto-fill slug from title (only while user hasn't typed in slug field manually)
     (function() {
         var title = document.querySelector('input[name="title"]');

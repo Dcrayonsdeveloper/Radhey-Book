@@ -199,9 +199,15 @@
                                    value="{{ old('sections.' . $key, $rawValue) }}">
                         @elseif($def['type'] === 'textarea' || $def['type'] === 'html')
                             <div class="field-with-link-picker">
+                                @if($def['type'] !== 'html')
                                 <button type="button" class="btn-link-picker" data-target-name="sections[{{ $key }}]">🔗 Insert link</button>
-                                <textarea name="sections[{{ $key }}]" class="form-control" rows="{{ $def['type'] === 'html' ? 10 : 3 }}">{{ old('sections.' . $key, $rawValue) }}</textarea>
+                                @endif
+                                <textarea name="sections[{{ $key }}]"
+                                          class="form-control {{ $def['type'] === 'html' ? 'rich-editor' : '' }}"
+                                          rows="{{ $def['type'] === 'html' ? 10 : 3 }}">{{ old('sections.' . $key, $rawValue) }}</textarea>
+                                @if($def['type'] !== 'html')
                                 <span class="form-hint">HTML tags are supported. Use the Insert link button or type <code>&lt;a href="/page-slug"&gt;text&lt;/a&gt;</code> for internal links.</span>
+                                @endif
                             </div>
                         @endif
                     @endif
@@ -265,6 +271,23 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+<script>
+    if (window.tinymce) {
+        tinymce.init({
+            selector: 'textarea.rich-editor',
+            plugins: 'lists link image code table',
+            toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
+            height: 400,
+            skin: 'oxide-dark',
+            content_css: 'dark',
+            menubar: false,
+            setup: function (editor) {
+                editor.on('change keyup', function () { editor.save(); });
+            }
+        });
+    }
+</script>
 <script>
 (function() {
     const modal = document.getElementById('link-picker-modal');
