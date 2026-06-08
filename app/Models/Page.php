@@ -10,11 +10,12 @@ class Page extends Model
     protected $fillable = [
         'slug', 'title', 'meta_title', 'meta_description',
         'meta_keywords', 'noindex', 'canonical_url',
-        'sections', 'is_active',
+        'sections', 'content_blocks', 'is_active',
     ];
 
     protected $casts = [
         'sections' => 'array',
+        'content_blocks' => 'array',
         'is_active' => 'boolean',
         'noindex' => 'boolean',
     ];

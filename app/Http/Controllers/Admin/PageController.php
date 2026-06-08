@@ -57,6 +57,13 @@ class PageController extends Controller
             'meta_keywords' => 'nullable|max:500',
             'canonical_url' => 'nullable|url|max:500',
             'sections' => 'nullable|array',
+            'content_blocks' => 'nullable|array',
+            'content_blocks.*.heading' => 'nullable|string|max:500',
+            'content_blocks.*.heading_level' => 'nullable|in:h2,h3',
+            'content_blocks.*.content' => 'nullable|string|max:100000',
+            'content_blocks.*.image_position' => 'nullable|in:left,right',
+            'content_blocks.*.image_alt' => 'nullable|string|max:255',
+            'content_blocks.*.image_file' => 'nullable|image|max:2048',
         ]);
 
         // Per-section validation rules derived from field definitions so each
@@ -94,6 +101,8 @@ class PageController extends Controller
 
         $sections = array_merge($page->sections ?? [], $incoming);
 
+        $blocks = $this->parseContentBlocks($request, $page);
+
         $page->update([
             'meta_title' => $validated['meta_title'],
             'meta_description' => $validated['meta_description'],
@@ -101,6 +110,7 @@ class PageController extends Controller
             'noindex' => $request->boolean('noindex'),
             'canonical_url' => $validated['canonical_url'],
             'sections' => $sections,
+            'content_blocks' => $blocks,
         ]);
 
         return redirect()->route('admin.pages.edit', $page)->with('success', 'Page updated successfully.');
@@ -119,28 +129,105 @@ class PageController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:1000',
             'meta_keywords' => 'nullable|string|max:500',
-            'content' => 'nullable|string|max:200000',
+            'content_blocks' => 'nullable|array',
+            'content_blocks.*.heading' => 'nullable|string|max:500',
+            'content_blocks.*.heading_level' => 'nullable|in:h2,h3',
+            'content_blocks.*.content' => 'nullable|string|max:100000',
+            'content_blocks.*.image_position' => 'nullable|in:left,right',
+            'content_blocks.*.image_alt' => 'nullable|string|max:255',
+            'content_blocks.*.image_file' => 'nullable|image|max:2048',
         ], [
             'slug.regex' => 'Slug must be lowercase, start with a letter or number, and contain only letters, numbers, and hyphens.',
             'slug.unique' => 'A page with this slug already exists.',
         ]);
 
-        $sections = [];
-        if (!empty($validated['content'])) {
-            $sections['content'] = Purifier::clean($validated['content'], 'page-content');
-        }
-
+        // Create the page first so we have an ID for the image upload path.
         $page = Page::create([
             'slug' => $validated['slug'],
             'title' => $validated['title'],
             'meta_title' => $validated['meta_title'] ?? null,
             'meta_description' => $validated['meta_description'] ?? null,
             'meta_keywords' => $validated['meta_keywords'] ?? null,
-            'sections' => $sections,
+            'sections' => [],
             'is_active' => true,
         ]);
 
+        $blocks = $this->parseContentBlocks($request, $page);
+        if (!empty($blocks)) {
+            $page->update(['content_blocks' => $blocks]);
+        }
+
         return redirect()->route('admin.pages.edit', $page)->with('success', 'Page created. You can now add content sections.');
+    }
+
+    /**
+     * Parse content blocks from the request, handle image uploads, and return
+     * an ordered array ready to persist into the page's content_blocks column.
+     *
+     * Form contract: blocks are keyed by client-generated IDs in
+     * content_blocks[<id>][...]. A hidden _block_order field carries the
+     * comma-separated IDs in their current visual order (drag-and-drop result).
+     * Files arrive at content_blocks.<id>.image_file. Existing image URLs
+     * arrive in content_blocks.<id>.image_url and are kept unless replaced or
+     * explicitly removed via content_blocks.<id>._image_removed=1.
+     */
+    private function parseContentBlocks(Request $request, Page $page): array
+    {
+        $rawOrder  = $request->input('_block_order', '');
+        $rawBlocks = $request->input('content_blocks', []);
+        $orderIds  = array_filter(array_map('trim', explode(',', $rawOrder)));
+        if (empty($orderIds)) {
+            $orderIds = array_keys($rawBlocks);
+        }
+
+        $result = [];
+        foreach ($orderIds as $id) {
+            if (!isset($rawBlocks[$id])) {
+                continue;
+            }
+            $b = $rawBlocks[$id];
+
+            // Image: priority is (1) new uploaded file, (2) removal flag, (3) existing URL.
+            $imageUrl = null;
+            $uploaded = $request->file("content_blocks.$id.image_file");
+            if ($uploaded && $uploaded->isValid()) {
+                $dir = public_path('uploads/blocks/' . $page->id);
+                if (!is_dir($dir)) {
+                    @mkdir($dir, 0755, true);
+                }
+                $ext = strtolower($uploaded->getClientOriginalExtension() ?: 'jpg');
+                $filename = 'blk_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+                $uploaded->move($dir, $filename);
+                $imageUrl = '/uploads/blocks/' . $page->id . '/' . $filename;
+            } elseif (!empty($b['_image_removed'])) {
+                $imageUrl = null;
+            } elseif (!empty($b['image_url'])) {
+                $imageUrl = $b['image_url'];
+            }
+
+            $heading = trim($b['heading'] ?? '');
+            $content = $b['content'] ?? '';
+            if ($content !== '') {
+                $content = Purifier::clean($content, 'page-content');
+            }
+
+            // Skip blocks that have no meaningful content at all
+            if ($heading === '' && trim(strip_tags($content)) === '' && !$imageUrl) {
+                continue;
+            }
+
+            $result[] = [
+                'id'             => $id,
+                'heading'        => $heading,
+                'heading_level'  => in_array($b['heading_level'] ?? '', ['h2', 'h3'], true) ? $b['heading_level'] : 'h2',
+                'content'        => $content,
+                'image_url'      => $imageUrl,
+                'image_alt'      => trim($b['image_alt'] ?? ''),
+                'image_position' => in_array($b['image_position'] ?? '', ['left', 'right'], true) ? $b['image_position'] : 'right',
+            ];
+        }
+
+        return $result;
     }
 
     public function destroy(Page $page)

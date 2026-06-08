@@ -8,7 +8,7 @@
         <a href="{{ route('admin.pages.index') }}" class="btn btn-sm btn-outline">&larr; Back</a>
     </div>
     <div class="panel-body">
-        <form method="POST" action="{{ route('admin.pages.store') }}">
+        <form method="POST" action="{{ route('admin.pages.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-grid">
                 <div class="form-group full-width">
@@ -46,17 +46,9 @@
                     @error('meta_keywords')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
 
-                <div class="form-group full-width" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 8px;">
-                    <label style="color: #d4af37; font-size: 14px;">Page Content</label>
-                </div>
-
-                <div class="form-group full-width">
-                    <label>Body Content</label>
-                    <textarea name="content" class="form-control" rows="15" placeholder="Page body content. You can add more sections later via the edit screen.">{{ old('content') }}</textarea>
-                    <span class="form-hint">HTML tags are supported for formatting.</span>
-                    @error('content')<span class="form-error">{{ $message }}</span>@enderror
-                </div>
             </div>
+
+            @include('admin.pages.partials.content-blocks-builder', ['blocks' => old('content_blocks_initial', [])])
 
             <div class="form-actions">
                 <button type="submit" class="btn btn-gold">Create Page</button>
@@ -69,17 +61,9 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="{{ asset('js/admin-content-blocks.js') }}?v={{ filemtime(public_path('js/admin-content-blocks.js')) }}"></script>
 <script>
-    tinymce.init({
-        selector: 'textarea[name="content"]',
-        plugins: 'lists link image code table',
-        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
-        height: 400,
-        skin: 'oxide-dark',
-        content_css: 'dark',
-        menubar: false,
-    });
-
     // Auto-fill slug from title (only while user hasn't typed in slug field manually)
     (function() {
         var title = document.querySelector('input[name="title"]');

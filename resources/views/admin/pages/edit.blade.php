@@ -17,8 +17,10 @@
     <a href="{{ route('admin.pages.index') }}" class="btn btn-sm btn-outline">&larr; All Pages</a>
 </div>
 
-<form id="page-edit-form" method="POST" action="{{ route('admin.pages.update', $page) }}">
+<form id="page-edit-form" method="POST" action="{{ route('admin.pages.update', $page) }}" enctype="multipart/form-data">
     @csrf @method('PUT')
+
+    @include('admin.pages.partials.content-blocks-builder', ['blocks' => $page->content_blocks ?? []])
 
     @include('admin.pages.partials.content-blocks-panel')
 
@@ -272,6 +274,8 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="{{ asset('js/admin-content-blocks.js') }}?v={{ filemtime(public_path('js/admin-content-blocks.js')) }}"></script>
 <script>
     if (window.tinymce) {
         tinymce.init({
