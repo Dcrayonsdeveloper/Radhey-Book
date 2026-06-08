@@ -151,11 +151,23 @@
     }
 
     // ---------- event delegation ----------
+    function focusAndScroll(row) {
+        if (!row) return;
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var firstInput = row.querySelector('input.label');
+        if (firstInput) {
+            // Wait a tick so the smooth scroll doesn't fight the focus
+            setTimeout(function () { firstInput.focus(); }, 250);
+        }
+    }
+
     document.getElementById('add-top').addEventListener('click', function () {
         // Re-collect first so we don't lose what's typed when there was a placeholder.
         var current = listEl.querySelector('.placeholder') ? [] : collect();
         current.push(blankItem());
         render(current);
+        var blocks = listEl.querySelectorAll('.menu-block');
+        focusAndScroll(blocks[blocks.length - 1] ? blocks[blocks.length - 1].querySelector('.menu-row') : null);
     });
 
     listEl.addEventListener('click', function (e) {
@@ -175,7 +187,9 @@
         } else if (t.classList.contains('add-child')) {
             var block = t.closest('.menu-block');
             var childrenWrap = block.querySelector(':scope > .children-wrap');
-            childrenWrap.appendChild(buildRow(blankChild(), true));
+            var newRow = buildRow(blankChild(), true);
+            childrenWrap.appendChild(newRow);
+            focusAndScroll(newRow);
         }
     });
 
