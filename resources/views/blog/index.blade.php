@@ -19,7 +19,11 @@
         <div class="blog-grid-full">
             @foreach($posts as $post)
             <div class="blog-card-horizontal">
-                <div class="blog-card-image" style="background: linear-gradient(135deg, #1a1a2e, #2d1b4e);"></div>
+                @if($post->image)
+                    <div class="blog-card-image" style="background: url('{{ asset($post->image) }}') center/cover no-repeat;"></div>
+                @else
+                    <div class="blog-card-image" style="background: linear-gradient(135deg, #1a1a2e, #2d1b4e);"></div>
+                @endif
                 <div class="blog-card-content">
                     <div class="blog-meta">
                         <span class="blog-category">{{ $post->category }}</span>

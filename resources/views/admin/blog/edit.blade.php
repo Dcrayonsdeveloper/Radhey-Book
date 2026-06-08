@@ -8,7 +8,7 @@
         <a href="{{ route('admin.blog.index') }}" class="btn btn-sm btn-outline">&larr; Back</a>
     </div>
     <div class="panel-body">
-        <form method="POST" action="{{ route('admin.blog.update', $blog) }}">
+        <form method="POST" action="{{ route('admin.blog.update', $blog) }}" enctype="multipart/form-data">
             @csrf @method('PUT')
             <div class="form-grid">
                 <div class="form-group full-width">
@@ -38,11 +38,16 @@
 
                 @php
                     $existingStatus = old('status', $blog->status);
-                    $existingScheduledAt = old('scheduled_at', optional($blog->published_at)->format('Y-m-d\TH:i'));
+                    // Only pre-fill the schedule input when we are actually scheduling — otherwise
+                    // leaving the past publish_at value in a hidden, min-constrained input silently
+                    // blocks form submission via HTML5 validation.
+                    $existingScheduledAt = $existingStatus === 'scheduled'
+                        ? old('scheduled_at', optional($blog->published_at)->format('Y-m-d\TH:i'))
+                        : old('scheduled_at', '');
                 @endphp
                 <div class="form-group" id="schedule-field" style="{{ $existingStatus === 'scheduled' ? '' : 'display:none;' }}">
                     <label>Schedule for *</label>
-                    <input type="datetime-local" name="scheduled_at" class="form-control" value="{{ $existingScheduledAt }}" min="{{ now()->format('Y-m-d\TH:i') }}">
+                    <input type="datetime-local" name="scheduled_at" class="form-control" value="{{ $existingScheduledAt }}">
                     <span class="form-hint">Post will go live automatically at this time.</span>
                     @error('scheduled_at')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
@@ -61,8 +66,16 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <label>Image Path</label>
-                    <input type="text" name="image" class="form-control" value="{{ old('image', $blog->image) }}">
+                    <label>Featured Image</label>
+                    @if($blog->image)
+                        <div style="margin-bottom: 10px;">
+                            <img src="{{ asset($blog->image) }}" alt="Current featured image" style="max-width: 220px; height: auto; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="margin-top: 6px;"><span class="form-hint">Current: {{ $blog->image }}</span></div>
+                        </div>
+                    @endif
+                    <input type="file" name="image_file" class="form-control" accept="image/*">
+                    <span class="form-hint">Upload to replace — leave empty to keep current. JPG, PNG, WebP, max 2 MB.</span>
+                    @error('image_file')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
 
                 <div class="form-group full-width" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 8px;">
@@ -86,8 +99,8 @@
 
                 <div class="form-group full-width">
                     <label>Canonical URL</label>
-                    <input type="url" name="canonical_url" class="form-control" value="{{ old('canonical_url', $blog->canonical_url) }}" placeholder="https://example.com/preferred-url">
-                    <span class="form-hint">Optional. Override the canonical URL for this post.</span>
+                    <input type="text" name="canonical_url" class="form-control" value="{{ old('canonical_url', $blog->canonical_url) }}" placeholder="https://radheybook.com/blog/my-custom-slug">
+                    <span class="form-hint">The last segment of this URL becomes the post's slug. Current post URL: <code>{{ route('blog.show', $blog->slug) }}</code></span>
                     @error('canonical_url')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
 

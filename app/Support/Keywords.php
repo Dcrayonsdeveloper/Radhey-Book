@@ -51,10 +51,10 @@ class Keywords
         'Online Betting ID'          => '/online-betting-id',
         'Online Cricket ID'          => '/cricket',
         'Cricket Betting ID'         => '/cricket-betting-id',
-        'Casino Betting ID'          => '/casino-betting-id',
+        'Casino Betting ID'          => '/casino',
         'Tennis Betting ID'          => '/tennis-betting-id',
         'Football Betting ID'        => '/football-betting-id',
-        'Online Casino ID'           => '/online-casino-id',
+        'Online Casino ID'           => '/casino',
         'Tennis Betting'             => '/tennis-betting',
         'Football Betting'           => '/football-betting',
         'IPL Betting ID'             => '/ipl-betting-id',
@@ -65,7 +65,7 @@ class Keywords
         'Reddy Anna'                 => '/reddy-anna',
         'Mahadev Book'               => '/mahadev-book',
         'Cricket ID'                 => '/cricket-betting-id',
-        'Casino ID'                  => '/online-casino-id',
+        'Casino ID'                  => '/casino',
     ];
 
     /**

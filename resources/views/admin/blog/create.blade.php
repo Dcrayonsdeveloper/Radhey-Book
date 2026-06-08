@@ -8,7 +8,7 @@
         <a href="{{ route('admin.blog.index') }}" class="btn btn-sm btn-outline">&larr; Back</a>
     </div>
     <div class="panel-body">
-        <form method="POST" action="{{ route('admin.blog.store') }}">
+        <form method="POST" action="{{ route('admin.blog.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-grid">
                 <div class="form-group full-width">
@@ -46,7 +46,7 @@
 
                 <div class="form-group" id="schedule-field" style="{{ old('status') === 'scheduled' ? '' : 'display:none;' }}">
                     <label>Schedule for *</label>
-                    <input type="datetime-local" name="scheduled_at" class="form-control" value="{{ old('scheduled_at') }}" min="{{ now()->format('Y-m-d\TH:i') }}">
+                    <input type="datetime-local" name="scheduled_at" class="form-control" value="{{ old('scheduled_at') }}">
                     <span class="form-hint">Post will go live automatically at this time.</span>
                     @error('scheduled_at')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
@@ -65,9 +65,10 @@
                 </div>
 
                 <div class="form-group full-width">
-                    <label>Image Path</label>
-                    <input type="text" name="image" class="form-control" value="{{ old('image') }}" placeholder="blog/image-name.jpg">
-                    <span class="form-hint">Relative path to image in public/images/</span>
+                    <label>Featured Image</label>
+                    <input type="file" name="image_file" class="form-control" accept="image/*">
+                    <span class="form-hint">Upload JPG, PNG or WebP — max 2 MB. Stored under public/blog/.</span>
+                    @error('image_file')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
 
                 <div class="form-group full-width" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 8px;">
@@ -91,8 +92,8 @@
 
                 <div class="form-group full-width">
                     <label>Canonical URL</label>
-                    <input type="url" name="canonical_url" class="form-control" value="{{ old('canonical_url') }}" placeholder="https://example.com/preferred-url">
-                    <span class="form-hint">Optional. Override the canonical URL for this post.</span>
+                    <input type="text" name="canonical_url" class="form-control" value="{{ old('canonical_url') }}" placeholder="https://radheybook.com/blog/my-custom-slug">
+                    <span class="form-hint">The last segment of this URL becomes the post's slug. Leave empty to auto-generate from title.</span>
                     @error('canonical_url')<span class="form-error">{{ $message }}</span>@enderror
                 </div>
 

@@ -27,6 +27,9 @@
     <div class="container">
         <div class="blog-layout">
             <article class="blog-article">
+                @if($post->image)
+                    <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;display:block;">
+                @endif
                 {!! $post->content !!}
 
                 <div class="blog-cta-box">

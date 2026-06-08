@@ -45,6 +45,8 @@ class PageController extends Controller
     public function cricket() { return $this->renderPage('cricket', 'pages.cricket'); }
     public function cricketBettingId() { return $this->renderPage('cricket-betting-id', 'pages.cricket-betting-id'); }
     public function casino() { return $this->renderPage('casino', 'pages.casino'); }
+    public function casinoBettingId() { return $this->renderPage('casino-betting-id', 'pages.casino-betting-id'); }
+    public function onlineCasinoId() { return $this->renderPage('online-casino-id', 'pages.online-casino-id'); }
     public function tennis() { return $this->renderPage('tennis-betting-id', 'pages.tennis'); }
     public function football() { return $this->renderPage('football-betting-id', 'pages.football'); }
     public function aviator() { return $this->renderPage('aviator', 'pages.aviator'); }
@@ -60,9 +62,7 @@ class PageController extends Controller
     public function onlineFootballBettingId() { return $this->renderPage('online-football-betting-id', 'pages.online-football-betting-id'); }
     public function reddyAnnaBookId() { return $this->renderPage('reddy-anna-book-id', 'pages.reddy-anna-book-id'); }
     public function lordsExchangeId() { return $this->renderPage('lords-exchange-id', 'pages.lords-exchange-id'); }
-    public function casinoBettingId() { return $this->renderPage('casino-betting-id', 'pages.casino-betting-id'); }
     public function lotusExchangeId() { return $this->renderPage('lotus-exchange-id', 'pages.lotus-exchange-id'); }
-    public function onlineCasinoId() { return $this->renderPage('online-casino-id', 'pages.online-casino-id'); }
     public function bestIplBettingIdProviders() { return $this->renderPage('best-ipl-betting-id-providers', 'pages.best-ipl-betting-id-providers'); }
     public function skyExchangeId() { return $this->renderPage('sky-exchange-id', 'pages.sky-exchange-id'); }
     public function t20CricketBettingId() { return $this->renderPage('t20-cricket-betting-id', 'pages.t20-cricket-betting-id'); }
@@ -86,6 +86,8 @@ class PageController extends Controller
             ['loc' => url('/cricket'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/cricket-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/casino'), 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['loc' => url('/casino-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['loc' => url('/online-casino-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/tennis-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/football-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/aviator'), 'changefreq' => 'weekly', 'priority' => '0.8'],
@@ -100,9 +102,7 @@ class PageController extends Controller
             ['loc' => url('/whatsapp-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/reddy-anna-book-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/lords-exchange-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
-            ['loc' => url('/casino-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/lotus-exchange-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
-            ['loc' => url('/online-casino-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/best-ipl-betting-id-providers'), 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['loc' => url('/sky-exchange-id'), 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['loc' => url('/t20-cricket-betting-id'), 'changefreq' => 'weekly', 'priority' => '0.9'],

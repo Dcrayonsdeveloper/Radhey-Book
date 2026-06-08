@@ -28,6 +28,8 @@ Route::get('/responsible-gaming', [PageController::class, 'responsibleGaming'])-
 Route::get('/cricket', [PageController::class, 'cricket'])->name('cricket');
 Route::get('/cricket-betting-id', [PageController::class, 'cricketBettingId'])->name('cricket-betting-id');
 Route::get('/casino', [PageController::class, 'casino'])->name('casino');
+Route::get('/casino-betting-id', [PageController::class, 'casinoBettingId'])->name('casino-betting-id');
+Route::get('/online-casino-id', [PageController::class, 'onlineCasinoId'])->name('online-casino-id');
 Route::get('/tennis-betting-id', [PageController::class, 'tennis'])->name('tennis');
 Route::get('/football-betting-id', [PageController::class, 'football'])->name('football');
 Route::get('/aviator', [PageController::class, 'aviator'])->name('aviator');
@@ -46,9 +48,7 @@ Route::get('/whatsapp-betting-id', [PageController::class, 'whatsappBettingId'])
 Route::get('/online-football-betting-id', [PageController::class, 'onlineFootballBettingId'])->name('online-football-betting-id');
 Route::get('/reddy-anna-book-id', [PageController::class, 'reddyAnnaBookId'])->name('reddy-anna-book-id');
 Route::get('/lords-exchange-id', [PageController::class, 'lordsExchangeId'])->name('lords-exchange-id');
-Route::get('/casino-betting-id', [PageController::class, 'casinoBettingId'])->name('casino-betting-id');
 Route::get('/lotus-exchange-id', [PageController::class, 'lotusExchangeId'])->name('lotus-exchange-id');
-Route::get('/online-casino-id', [PageController::class, 'onlineCasinoId'])->name('online-casino-id');
 Route::get('/best-ipl-betting-id-providers', [PageController::class, 'bestIplBettingIdProviders'])->name('best-ipl-betting-id-providers');
 Route::get('/sky-exchange-id', [PageController::class, 'skyExchangeId'])->name('sky-exchange-id');
 Route::get('/t20-cricket-betting-id', [PageController::class, 't20CricketBettingId'])->name('t20-cricket-betting-id');

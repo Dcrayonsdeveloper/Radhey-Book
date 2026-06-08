@@ -34,15 +34,18 @@ class BlogController extends Controller
             'meta_description' => 'nullable|max:500',
             'meta_keywords' => 'nullable|max:255',
             'canonical_url' => 'nullable|url|max:500',
-            'image' => 'nullable|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
         ]);
 
         $validated['content'] = Purifier::clean($validated['content'] ?? '', 'page-content');
         $validated['excerpt'] = Purifier::clean($validated['excerpt'] ?? '', 'page-content');
 
         $validated['noindex'] = $request->boolean('noindex');
-        $validated['slug'] = Str::slug($validated['title']);
         $validated['author'] = auth()->user()->name;
+
+        // Slug source: last path segment of the canonical URL if provided, else the title.
+        $slugSource = $this->slugFromCanonical($validated['canonical_url'] ?? null) ?: $validated['title'];
+        $validated['slug'] = Str::slug($slugSource);
 
         $validated['published_at'] = $this->resolvePublishedAt($validated['status'], $validated['scheduled_at'] ?? null);
         unset($validated['scheduled_at']);
@@ -53,6 +56,16 @@ class BlogController extends Controller
         while (BlogPost::where('slug', $validated['slug'])->exists()) {
             $validated['slug'] = $baseSlug . '-' . $counter++;
         }
+
+        // If user did not enter a canonical URL, default it to the post's own URL.
+        if (empty($validated['canonical_url'])) {
+            $validated['canonical_url'] = route('blog.show', $validated['slug']);
+        }
+
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $this->storeImage($request->file('image_file'), $validated['slug']);
+        }
+        unset($validated['image_file']);
 
         BlogPost::create($validated);
 
@@ -77,7 +90,7 @@ class BlogController extends Controller
             'meta_description' => 'nullable|max:500',
             'meta_keywords' => 'nullable|max:255',
             'canonical_url' => 'nullable|url|max:500',
-            'image' => 'nullable|max:255',
+            'image_file' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
         ]);
 
         $validated['content'] = Purifier::clean($validated['content'] ?? '', 'page-content');
@@ -93,9 +106,55 @@ class BlogController extends Controller
             : $this->resolvePublishedAt($validated['status'], $validated['scheduled_at'] ?? null);
         unset($validated['scheduled_at']);
 
+        // If canonical URL changed, derive a new slug from its last path segment.
+        $newSlug = $this->slugFromCanonical($validated['canonical_url'] ?? null);
+        if ($newSlug && $newSlug !== $blog->slug) {
+            $slug = Str::slug($newSlug);
+            $base = $slug;
+            $i = 1;
+            while (BlogPost::where('slug', $slug)->where('id', '!=', $blog->id)->exists()) {
+                $slug = $base . '-' . $i++;
+            }
+            $validated['slug'] = $slug;
+        }
+
+        // If canonical URL is empty, default to the (possibly-updated) post URL.
+        if (empty($validated['canonical_url'])) {
+            $validated['canonical_url'] = route('blog.show', $validated['slug'] ?? $blog->slug);
+        }
+
+        if ($request->hasFile('image_file')) {
+            $validated['image'] = $this->storeImage($request->file('image_file'), $validated['slug'] ?? $blog->slug);
+        }
+        unset($validated['image_file']);
+
         $blog->update($validated);
 
         return redirect()->route('admin.blog.index')->with('success', $this->successMessage('updated', $validated['status'], $validated['published_at']));
+    }
+
+    private function storeImage(\Illuminate\Http\UploadedFile $file, string $slug): string
+    {
+        // Stored under uploads/blog/ rather than blog/ so the directory does
+        // not shadow the /blog Laravel route (nginx would serve a 403 on /blog/).
+        $dir = public_path('uploads/blog');
+        if (!is_dir($dir)) mkdir($dir, 0755, true);
+        $name = $slug . '-' . time() . '.' . strtolower($file->getClientOriginalExtension());
+        $file->move($dir, $name);
+        return 'uploads/blog/' . $name;
+    }
+
+    /**
+     * Extract the slug from a canonical URL's last path segment.
+     * Returns null when the URL is empty or has no usable path.
+     */
+    private function slugFromCanonical(?string $url): ?string
+    {
+        if (empty($url)) return null;
+        $path = parse_url($url, PHP_URL_PATH);
+        if (!$path) return null;
+        $segment = basename(rtrim($path, '/'));
+        return $segment !== '' ? $segment : null;
     }
 
     public function destroy(BlogPost $blog)
