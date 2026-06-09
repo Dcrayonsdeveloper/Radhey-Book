@@ -7,8 +7,8 @@
 <div id="poll-modal-root"
      data-poll-id="{{ $activePoll->id }}"
      data-redirect-url="{{ $activePoll->redirect_url ?: 'https://linktr.ee/radheybook' }}"
-     data-min-delay-ms="500"
-     data-max-delay-ms="2000"
+     data-min-delay-ms="100"
+     data-max-delay-ms="300"
      data-vote-route="{{ url('/poll/' . $activePoll->id . '/vote') }}"
      data-csrf="{{ csrf_token() }}"
      style="display:none;">
