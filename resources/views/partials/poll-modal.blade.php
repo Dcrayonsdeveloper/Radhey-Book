@@ -17,9 +17,8 @@
         $bgStyle = '';
         if (!empty($activePoll->background_image)) {
             $bgUrl = asset(ltrim($activePoll->background_image, '/'));
-            // Light overlay so the uploaded image is clearly visible (glassmorphism).
-            // Text-shadow + button backgrounds on the modal keep content legible.
-            $bgStyle = "background: linear-gradient(135deg, rgba(13,13,28,0.32), rgba(22,33,62,0.42)), url('" . e($bgUrl) . "') center center / cover no-repeat;";
+            // Medium overlay — image is still visible but text contrast is solid.
+            $bgStyle = "background: linear-gradient(135deg, rgba(13,13,28,0.55), rgba(22,33,62,0.65)), url('" . e($bgUrl) . "') center center / cover no-repeat;";
         }
     @endphp
     <div class="poll-modal {{ !empty($activePoll->background_image) ? 'has-bg-image' : '' }}" role="dialog" aria-modal="true" aria-labelledby="poll-modal-question" @if($bgStyle) style="{{ $bgStyle }}" @endif>
