@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Menu;
+use App\Models\Poll;
 use App\Models\SiteSetting;
 use App\Support\Keywords;
 use Illuminate\Support\Facades\Blade;
@@ -45,6 +46,14 @@ class AppServiceProvider extends ServiceProvider
         } else {
             View::share('headerMenu', []);
             View::share('footerQuickLinks', []);
+        }
+
+        // Share the currently-active poll with the public layout only (admin
+        // pages don't render the popup, so no need to run the query there).
+        if (Schema::hasTable('polls')) {
+            View::composer('layouts.app', function ($view) {
+                $view->with('activePoll', Poll::active()->with('options')->first());
+            });
         }
 
         // @kw($html) — wrap known keywords in <strong> tags.

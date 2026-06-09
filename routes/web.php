@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\RedirectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PollController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PollVoteController;
 
 // Homepage
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -105,6 +107,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
         Route::put('/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
 
+        // Polls (popup widget shown on every public page)
+        Route::get('/polls',                 [PollController::class, 'index'])->name('polls.index');
+        Route::get('/polls/create',          [PollController::class, 'create'])->name('polls.create');
+        Route::post('/polls',                [PollController::class, 'store'])->name('polls.store');
+        Route::get('/polls/{poll}/edit',     [PollController::class, 'edit'])->name('polls.edit');
+        Route::put('/polls/{poll}',          [PollController::class, 'update'])->name('polls.update');
+        Route::delete('/polls/{poll}',       [PollController::class, 'destroy'])->name('polls.destroy');
+        Route::post('/polls/{poll}/activate',   [PollController::class, 'activate'])->name('polls.activate');
+        Route::post('/polls/{poll}/deactivate', [PollController::class, 'deactivate'])->name('polls.deactivate');
+        Route::post('/polls/{poll}/reset-votes', [PollController::class, 'resetVotes'])->name('polls.reset-votes');
+
         // URL redirects
         Route::get('/redirects', [RedirectController::class, 'index'])->name('redirects.index');
         Route::get('/redirects/create', [RedirectController::class, 'create'])->name('redirects.create');
@@ -123,6 +136,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/settings/password', [SettingController::class, 'changePassword'])->name('settings.password');
     });
 });
+
+// Poll vote endpoint — JSON, throttled to slow down obvious abuse.
+Route::post('/poll/{poll}/vote/{option}', [PollVoteController::class, 'store'])
+    ->middleware('throttle:60,1')
+    ->name('poll.vote');
 
 // Catch-all for admin-created pages. Must stay LAST so explicit routes above win.
 // Regex only matches simple kebab-case slugs to avoid intercepting asset paths.

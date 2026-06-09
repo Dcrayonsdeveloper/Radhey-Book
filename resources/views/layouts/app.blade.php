@@ -324,5 +324,11 @@
 
     {{-- Page-specific Scripts --}}
     @stack('scripts')
+
+    {{-- Poll popup (renders only when an active poll exists) --}}
+    @include('partials.poll-modal')
+    @if (!empty($activePoll) && $activePoll->options->count() >= 2)
+        <script src="{{ asset('js/poll-modal.js') }}?v={{ filemtime(public_path('js/poll-modal.js')) }}" defer></script>
+    @endif
 </body>
 </html>
