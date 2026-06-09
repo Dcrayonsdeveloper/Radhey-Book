@@ -35,7 +35,14 @@
                 </button>
             @endforeach
         </div>
-        <p class="poll-modal-hint">Tap an option to see live results</p>
+        @php $totalVotes = $activePoll->totalVotes(); @endphp
+        <p class="poll-modal-hint">
+            <span class="poll-pulse-dot" aria-hidden="true"></span>
+            Tap an option to see live results
+            @if ($totalVotes > 0)
+                <span class="poll-vote-count">· {{ number_format($totalVotes) }} {{ $totalVotes == 1 ? 'vote' : 'votes' }}</span>
+            @endif
+        </p>
     </div>
 </div>
 @endif

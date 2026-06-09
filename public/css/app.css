@@ -6841,7 +6841,7 @@ h3.block-heading {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -42%) scale(0.94);
+    transform: translate(-50%, -42%) scale(0.88);
     width: calc(100% - 32px);
     max-width: 520px;
     background:
@@ -6854,12 +6854,24 @@ h3.block-heading {
     box-shadow: 0 30px 80px rgba(0,0,0,0.65),
                 0 0 0 1px rgba(255,255,255,0.05) inset,
                 0 0 36px rgba(212,175,55,0.18);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Springier entrance via overshoot cubic-bezier */
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
     overflow: hidden;
 }
 #poll-modal-root.is-visible .poll-modal {
     transform: translate(-50%, -50%) scale(1);
-    animation: poll-border-glow 3.4s ease-in-out 0.6s infinite;
+    /* Pulse + gentle floating bob after entrance settles */
+    animation: poll-border-glow 3.4s ease-in-out 0.6s infinite,
+               poll-modal-float 5s ease-in-out 0.6s infinite;
+}
+#poll-modal-root.is-visible .poll-modal.has-bg-image {
+    animation: poll-border-glow-image 3.4s ease-in-out 0.6s infinite,
+               poll-modal-float 5s ease-in-out 0.6s infinite;
+}
+
+@keyframes poll-modal-float {
+    0%, 100% { transform: translate(-50%, -50%) scale(1) translateY(0); }
+    50%      { transform: translate(-50%, -50%) scale(1) translateY(-4px); }
 }
 
 /* Decorative top gold line, mirrors the site's other modals */
@@ -6900,8 +6912,9 @@ h3.block-heading {
 }
 
 .poll-modal-question {
-    margin: 0 0 24px;
-    padding: 0 28px;
+    position: relative;
+    margin: 0 0 16px;
+    padding: 0 28px 18px;
     font-size: 22px;
     font-weight: 800;
     line-height: 1.35;
@@ -6911,6 +6924,19 @@ h3.block-heading {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+/* Small gold accent line under the question */
+.poll-modal-question::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent 0%, #d4af37 30%, #f5d060 50%, #d4af37 70%, transparent 100%);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
 }
 
 .poll-modal-options {
@@ -7026,11 +7052,35 @@ h3.block-heading {
 
 .poll-modal-hint {
     margin: 22px 0 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
     font-size: 13px;
     text-align: center;
     letter-spacing: 0.3px;
     transition: color 0.3s ease;
+}
+
+/* Live indicator dot + total-votes badge in the hint line */
+.poll-pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    margin-right: 6px;
+    vertical-align: middle;
+    animation: poll-live-pulse 1.5s ease-in-out infinite;
+}
+@keyframes poll-live-pulse {
+    0%, 100% { opacity: 1;   box-shadow: 0 0 0 0   rgba(239,68,68,0.65); }
+    50%      { opacity: 0.75; box-shadow: 0 0 0 7px rgba(239,68,68,0); }
+}
+.poll-vote-count {
+    color: #f5d060;
+    font-weight: 700;
+    margin-left: 4px;
+}
+.poll-modal.has-bg-image .poll-vote-count {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 #poll-modal-root.results-shown .poll-modal-hint {
     color: #d4af37;
