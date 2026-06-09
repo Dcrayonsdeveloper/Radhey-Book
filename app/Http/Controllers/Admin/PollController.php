@@ -114,7 +114,7 @@ class PollController extends Controller
         return $request->validate([
             'question'              => 'required|string|max:500',
             'redirect_url'          => 'nullable|url|max:500',
-            'background_image_file' => 'nullable|image|max:2048',
+            'background_image_file' => 'nullable|image|max:8192',
             'is_active'             => 'nullable|boolean',
             'options'               => 'required|array|min:2|max:8',
             'options.*.id'    => 'nullable|integer',
@@ -124,7 +124,7 @@ class PollController extends Controller
             'options.max'           => 'A poll can have at most 8 options.',
             'options.*.label.required' => 'Every option needs a label.',
             'background_image_file.image' => 'Background must be a jpg, png, or webp image.',
-            'background_image_file.max'   => 'Background image must be 2 MB or smaller.',
+            'background_image_file.max'   => 'Background image must be 8 MB or smaller.',
         ]);
     }
 

@@ -31,7 +31,7 @@
             </div>
             <input type="file" name="background_image_file" class="form-control" id="poll-bg-file" accept="image/jpeg,image/png,image/webp">
         </div>
-        <span class="form-hint">jpg / png / webp, max 2 MB. Shown behind the popup with a dark overlay so text stays readable.</span>
+        <span class="form-hint">jpg / png / webp, max 8 MB. Shown behind the popup with a dark overlay so text stays readable.</span>
         @error('background_image_file')<span class="form-error">{{ $message }}</span>@enderror
     </div>
 
