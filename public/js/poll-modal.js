@@ -25,7 +25,9 @@
     var voteRoute     = root.getAttribute('data-vote-route');
     var csrf          = root.getAttribute('data-csrf');
     var dismissKey    = 'radhey_poll_dismissed_' + pollId;
-    var resultsShownMs = 2000;
+    // Redirect fires immediately after the vote response — user requested
+    // the after-click delay be effectively zero.
+    var resultsShownMs = 0;
 
     // Pick a random delay in [minDelayMs, maxDelayMs] so the popup
     // doesn't appear at the same predictable moment on every visit.
