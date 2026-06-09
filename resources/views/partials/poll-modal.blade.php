@@ -13,7 +13,16 @@
      data-csrf="{{ csrf_token() }}"
      style="display:none;">
     <div class="poll-modal-overlay" data-poll-close="overlay"></div>
-    <div class="poll-modal" role="dialog" aria-modal="true" aria-labelledby="poll-modal-question">
+    @php
+        $bgStyle = '';
+        if (!empty($activePoll->background_image)) {
+            $bgUrl = asset(ltrim($activePoll->background_image, '/'));
+            // Dark overlay on top of the image so question + options stay legible.
+            // Inline style overrides the default gradient on .poll-modal.
+            $bgStyle = "background: linear-gradient(135deg, rgba(13,13,28,0.82), rgba(22,33,62,0.86)), url('" . e($bgUrl) . "') center center / cover no-repeat;";
+        }
+    @endphp
+    <div class="poll-modal {{ !empty($activePoll->background_image) ? 'has-bg-image' : '' }}" role="dialog" aria-modal="true" aria-labelledby="poll-modal-question" @if($bgStyle) style="{{ $bgStyle }}" @endif>
         <button type="button" class="poll-modal-close" data-poll-close="button" aria-label="Close">&times;</button>
         <h3 id="poll-modal-question" class="poll-modal-question">{{ $activePoll->question }}</h3>
         <div class="poll-modal-options">

@@ -67,5 +67,38 @@
         });
     }
 
+    // Background image preview + remove
+    (function () {
+        var fileInput  = document.getElementById('poll-bg-file');
+        var preview    = document.querySelector('.poll-bg-preview');
+        var previewImg = preview ? preview.querySelector('img') : null;
+        var removeBtn  = document.getElementById('poll-bg-remove');
+        var urlInput   = document.querySelector('input[name="background_image_url"]');
+        var removeFlag = document.getElementById('poll-bg-removed-flag');
+        if (!fileInput || !preview || !previewImg) return;
+
+        fileInput.addEventListener('change', function () {
+            var f = fileInput.files && fileInput.files[0];
+            if (!f) return;
+            if (removeFlag) removeFlag.value = '0';
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                preview.style.display = '';
+            };
+            reader.readAsDataURL(f);
+        });
+
+        if (removeBtn) {
+            removeBtn.addEventListener('click', function () {
+                previewImg.src = '';
+                preview.style.display = 'none';
+                fileInput.value = '';
+                if (urlInput)   urlInput.value = '';
+                if (removeFlag) removeFlag.value = '1';
+            });
+        }
+    })();
+
     renumber();
 })();

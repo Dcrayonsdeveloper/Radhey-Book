@@ -8,7 +8,7 @@
         <a href="{{ route('admin.polls.index') }}" class="btn btn-sm btn-outline">&larr; All Polls</a>
     </div>
     <div class="panel-body">
-        <form method="POST" action="{{ route('admin.polls.update', $poll) }}">
+        <form method="POST" action="{{ route('admin.polls.update', $poll) }}" enctype="multipart/form-data">
             @csrf @method('PUT')
             @include('admin.polls._form', ['poll' => $poll])
         </form>

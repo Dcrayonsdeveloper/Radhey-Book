@@ -37,6 +37,11 @@ class PollController extends Controller
                 'is_active'    => !empty($validated['is_active']),
             ]);
 
+            $bg = $this->resolveBackgroundImage($request, $poll, null);
+            if ($bg !== null) {
+                $poll->update(['background_image' => $bg]);
+            }
+
             $this->saveOptions($poll, $request->input('options', []));
         });
 
@@ -60,10 +65,13 @@ class PollController extends Controller
                     ->update(['is_active' => false]);
             }
 
+            $bg = $this->resolveBackgroundImage($request, $poll, $poll->background_image);
+
             $poll->update([
-                'question'     => $validated['question'],
-                'redirect_url' => $validated['redirect_url'] ?: 'https://linktr.ee/radheybook',
-                'is_active'    => !empty($validated['is_active']),
+                'question'         => $validated['question'],
+                'redirect_url'     => $validated['redirect_url'] ?: 'https://linktr.ee/radheybook',
+                'background_image' => $bg,
+                'is_active'        => !empty($validated['is_active']),
             ]);
 
             $this->saveOptions($poll, $request->input('options', []));
@@ -104,17 +112,55 @@ class PollController extends Controller
     private function validatePollRequest(Request $request): array
     {
         return $request->validate([
-            'question'      => 'required|string|max:500',
-            'redirect_url'  => 'nullable|url|max:500',
-            'is_active'     => 'nullable|boolean',
-            'options'       => 'required|array|min:2|max:8',
+            'question'              => 'required|string|max:500',
+            'redirect_url'          => 'nullable|url|max:500',
+            'background_image_file' => 'nullable|image|max:2048',
+            'is_active'             => 'nullable|boolean',
+            'options'               => 'required|array|min:2|max:8',
             'options.*.id'    => 'nullable|integer',
             'options.*.label' => 'required|string|max:200',
         ], [
             'options.min'           => 'A poll must have at least 2 options.',
             'options.max'           => 'A poll can have at most 8 options.',
             'options.*.label.required' => 'Every option needs a label.',
+            'background_image_file.image' => 'Background must be a jpg, png, or webp image.',
+            'background_image_file.max'   => 'Background image must be 2 MB or smaller.',
         ]);
+    }
+
+    /**
+     * Decide what to persist into polls.background_image based on what the
+     * form sent. Priority:
+     *   1. A new uploaded file       → move it into public/uploads/polls/{poll_id}/, return URL
+     *   2. _background_image_removed → return null (clears the column)
+     *   3. Existing background_image_url hidden field → keep as-is
+     *   4. $current (whatever was already in DB) → keep
+     */
+    private function resolveBackgroundImage(Request $request, Poll $poll, ?string $current): ?string
+    {
+        $uploaded = $request->file('background_image_file');
+        if ($uploaded && $uploaded->isValid()) {
+            $dir = public_path('uploads/polls/' . $poll->id);
+            if (!is_dir($dir)) {
+                @mkdir($dir, 0755, true);
+            }
+            $ext = strtolower($uploaded->getClientOriginalExtension() ?: 'jpg');
+            $filename = 'bg_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+            $uploaded->move($dir, $filename);
+            return '/uploads/polls/' . $poll->id . '/' . $filename;
+        }
+
+        if ($request->input('_background_image_removed') === '1') {
+            return null;
+        }
+
+        // Hidden field carries the existing URL between requests (e.g. on validation error)
+        $hidden = $request->input('background_image_url');
+        if (is_string($hidden) && $hidden !== '') {
+            return $hidden;
+        }
+
+        return $current;
     }
 
     /**

@@ -21,6 +21,21 @@
     </div>
 
     <div class="form-group full-width">
+        <label>Background Image (optional)</label>
+        <input type="hidden" name="background_image_url" value="{{ old('background_image_url', $poll->background_image ?? '') }}">
+        <input type="hidden" name="_background_image_removed" value="0" id="poll-bg-removed-flag">
+        <div class="poll-bg-row">
+            <div class="poll-bg-preview" style="{{ !empty($poll->background_image) ? '' : 'display:none;' }}">
+                <img src="{{ !empty($poll->background_image) ? asset(ltrim($poll->background_image, '/')) : '' }}" alt="">
+                <button type="button" class="poll-bg-remove" id="poll-bg-remove" title="Remove image">Remove</button>
+            </div>
+            <input type="file" name="background_image_file" class="form-control" id="poll-bg-file" accept="image/jpeg,image/png,image/webp">
+        </div>
+        <span class="form-hint">jpg / png / webp, max 2 MB. Shown behind the popup with a dark overlay so text stays readable.</span>
+        @error('background_image_file')<span class="form-error">{{ $message }}</span>@enderror
+    </div>
+
+    <div class="form-group full-width">
         <label class="toggle-label">
             <span class="toggle-text">Active (show on public site — replaces any currently active poll)</span>
             <input type="hidden" name="is_active" value="0">

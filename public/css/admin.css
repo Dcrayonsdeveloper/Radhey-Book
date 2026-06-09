@@ -1335,3 +1335,48 @@ select.form-control option {
     box-shadow: 0 8px 20px rgba(212, 175, 55, 0.18);
     transform: scale(1.005);
 }
+
+/* Poll background-image upload (admin) */
+.poll-bg-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.poll-bg-preview {
+    position: relative;
+    width: 200px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: #0d0d1c;
+}
+.poll-bg-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.poll-bg-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+.poll-bg-remove:hover {
+    background: rgba(248, 113, 113, 0.85);
+    border-color: #f87171;
+}
+#poll-bg-file {
+    flex: 1;
+    min-width: 220px;
+}
