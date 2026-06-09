@@ -20,11 +20,16 @@
 
     var pollId        = root.getAttribute('data-poll-id');
     var redirectUrl   = root.getAttribute('data-redirect-url');
-    var showDelayMs   = parseInt(root.getAttribute('data-show-delay-ms'), 10) || 5000;
+    var minDelayMs    = parseInt(root.getAttribute('data-min-delay-ms'), 10) || 3000;
+    var maxDelayMs    = parseInt(root.getAttribute('data-max-delay-ms'), 10) || 10000;
     var voteRoute     = root.getAttribute('data-vote-route');
     var csrf          = root.getAttribute('data-csrf');
     var dismissKey    = 'radhey_poll_dismissed_' + pollId;
     var resultsShownMs = 2000;
+
+    // Pick a random delay in [minDelayMs, maxDelayMs] so the popup
+    // doesn't appear at the same predictable moment on every visit.
+    var showDelayMs = minDelayMs + Math.floor(Math.random() * Math.max(1, (maxDelayMs - minDelayMs)));
 
     if (localStorage.getItem(dismissKey) === '1') {
         return; // visitor already dismissed/voted on this poll
