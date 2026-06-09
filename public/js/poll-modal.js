@@ -25,9 +25,8 @@
     var voteRoute     = root.getAttribute('data-vote-route');
     var csrf          = root.getAttribute('data-csrf');
     var dismissKey    = 'radhey_poll_dismissed_' + pollId;
-    // Pause for 5 seconds after the vote so the visitor sees the
-    // percentage bars animate before we redirect them off-site.
-    var resultsShownMs = 5000;
+    // 1-second pause so percentage bars get a quick read before redirect.
+    var resultsShownMs = 1000;
 
     // Pick a random delay in [minDelayMs, maxDelayMs] so the popup
     // doesn't appear at the same predictable moment on every visit.
