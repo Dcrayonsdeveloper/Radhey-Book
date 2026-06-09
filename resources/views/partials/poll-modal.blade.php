@@ -22,6 +22,7 @@
         }
     @endphp
     <div class="poll-modal {{ !empty($activePoll->background_image) ? 'has-bg-image' : '' }}" role="dialog" aria-modal="true" aria-labelledby="poll-modal-question" @if($bgStyle) style="{{ $bgStyle }}" @endif>
+        <div class="poll-modal-shine" aria-hidden="true"></div>
         <button type="button" class="poll-modal-close" data-poll-close="button" aria-label="Close">&times;</button>
         <h3 id="poll-modal-question" class="poll-modal-question">{{ $activePoll->question }}</h3>
         <div class="poll-modal-options">
@@ -38,7 +39,8 @@
         @php $totalVotes = $activePoll->totalVotes(); @endphp
         <p class="poll-modal-hint">
             <span class="poll-pulse-dot" aria-hidden="true"></span>
-            Tap an option to see live results
+            <span class="poll-live-label">LIVE</span>
+            Tap an option to see results
             @if ($totalVotes > 0)
                 <span class="poll-vote-count">· {{ number_format($totalVotes) }} {{ $totalVotes == 1 ? 'vote' : 'votes' }}</span>
             @endif

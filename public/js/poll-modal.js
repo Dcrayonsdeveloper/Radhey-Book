@@ -55,8 +55,20 @@
         setTimeout(function () { root.style.display = 'none'; }, 300);
     }
 
+    function animateCount(el, target, durationMs) {
+        var startTime = null;
+        function step(now) {
+            if (!startTime) startTime = now;
+            var t = Math.min(1, (now - startTime) / durationMs);
+            // ease-out cubic so the count decelerates near the final value
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(target * eased) + '%';
+            if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
     function renderResults(options) {
-        // Animate bars + show %s
         root.querySelectorAll('.poll-option').forEach(function (btn) {
             var optId = parseInt(btn.getAttribute('data-option-id'), 10);
             var data = options.find(function (o) { return o.id === optId; });
@@ -65,8 +77,9 @@
             var pctEl = btn.querySelector('.poll-option-pct');
             var bar   = btn.querySelector('.poll-option-bar');
             if (pctEl) {
-                pctEl.textContent = pct + '%';
+                pctEl.textContent = '0%';
                 pctEl.style.display = '';
+                animateCount(pctEl, pct, 850);
             }
             if (bar) {
                 requestAnimationFrame(function () {

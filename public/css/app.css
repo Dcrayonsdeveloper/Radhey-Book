@@ -6913,6 +6913,7 @@ h3.block-heading {
 
 .poll-modal-question {
     position: relative;
+    z-index: 2;
     margin: 0 0 16px;
     padding: 0 28px 18px;
     font-size: 22px;
@@ -6920,10 +6921,25 @@ h3.block-heading {
     line-height: 1.35;
     text-align: center;
     letter-spacing: 0.2px;
-    background: linear-gradient(135deg, #ffffff 0%, #f5d060 50%, #d4af37 100%);
+    /* Liquid gold gradient with shimmer animation */
+    background: linear-gradient(115deg,
+                #ffffff 0%,
+                #f5d060 20%,
+                #d4af37 35%,
+                #ffffff 50%,
+                #d4af37 65%,
+                #f5d060 80%,
+                #ffffff 100%);
+    background-size: 250% auto;
+    background-position: 0% center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: poll-text-shimmer 4.5s ease-in-out infinite;
+}
+@keyframes poll-text-shimmer {
+    0%, 100% { background-position: 0% center; }
+    50%      { background-position: 100% center; }
 }
 /* Small gold accent line under the question */
 .poll-modal-question::after {
@@ -6940,9 +6956,12 @@ h3.block-heading {
 }
 
 .poll-modal-options {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    perspective: 900px;
 }
 
 .poll-option {
@@ -6992,7 +7011,7 @@ h3.block-heading {
                 rgba(212,175,55,0.14) 0%,
                 rgba(212,175,55,0.06) 100%);
     border-color: rgba(212, 175, 55, 0.75);
-    transform: translateY(-2px) scale(1.012);
+    transform: translateY(-2px) scale(1.012) rotateX(2deg);
     box-shadow: 0 10px 28px rgba(212,175,55,0.22),
                 0 0 0 1px rgba(212,175,55,0.18) inset;
 }
@@ -7051,12 +7070,26 @@ h3.block-heading {
 }
 
 .poll-modal-hint {
+    position: relative;
+    z-index: 2;
     margin: 22px 0 0;
     color: rgba(255, 255, 255, 0.55);
     font-size: 13px;
     text-align: center;
     letter-spacing: 0.3px;
     transition: color 0.3s ease;
+}
+
+/* LIVE label */
+.poll-live-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ef4444;
+    margin-right: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(239,68,68,0.55);
 }
 
 /* Live indicator dot + total-votes badge in the hint line */
@@ -7066,7 +7099,7 @@ h3.block-heading {
     height: 8px;
     border-radius: 50%;
     background: #ef4444;
-    margin-right: 6px;
+    margin-right: 4px;
     vertical-align: middle;
     animation: poll-live-pulse 1.5s ease-in-out infinite;
 }
@@ -7214,3 +7247,57 @@ h3.block-heading {
     background: rgba(248, 113, 113, 0.85);
     border-color: #f87171;
 }
+
+/* ============================================================
+   Poll popup: sparkle sweep across the modal (the "magic" layer)
+   ============================================================ */
+
+.poll-modal-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: inherit;
+}
+.poll-modal-shine::before,
+.poll-modal-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(115deg,
+                transparent 30%,
+                rgba(255,255,255,0.10) 48%,
+                rgba(245,208,96,0.22) 50%,
+                rgba(255,255,255,0.10) 52%,
+                transparent 70%);
+    pointer-events: none;
+}
+.poll-modal-shine::before {
+    left: -60%;
+    animation: poll-shine-sweep 6s ease-in-out infinite;
+}
+.poll-modal-shine::after {
+    left: -60%;
+    animation: poll-shine-sweep 6s ease-in-out 3s infinite;
+    opacity: 0.6;
+}
+@keyframes poll-shine-sweep {
+    0%   { left: -60%; }
+    55%  { left: 160%; }
+    100% { left: 160%; }
+}
+.poll-modal.has-bg-image .poll-modal-shine::before,
+.poll-modal.has-bg-image .poll-modal-shine::after {
+    background: linear-gradient(115deg,
+                transparent 30%,
+                rgba(255,255,255,0.18) 48%,
+                rgba(245,208,96,0.42) 50%,
+                rgba(255,255,255,0.18) 52%,
+                transparent 70%);
+}
+
+/* Make sure header bar + close button sit above the shine */
+.poll-modal-close { z-index: 3; }
