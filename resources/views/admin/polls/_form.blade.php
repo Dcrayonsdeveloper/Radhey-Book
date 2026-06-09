@@ -40,6 +40,7 @@
             @endphp
             @foreach ($existingOptions as $i => $opt)
                 <div class="poll-option-row">
+                    <span class="poll-drag-handle" title="Drag to reorder">&#9776;</span>
                     <span class="poll-option-num">{{ $i + 1 }}</span>
                     @if (!empty($opt['id']))
                         <input type="hidden" name="options[{{ $i }}][id]" value="{{ $opt['id'] }}">
@@ -65,6 +66,7 @@
 
 <template id="poll-option-template">
     <div class="poll-option-row">
+        <span class="poll-drag-handle" title="Drag to reorder">&#9776;</span>
         <span class="poll-option-num">__NUM__</span>
         <input type="text" name="options[__INDEX__][label]" class="form-control" value="" placeholder="Option label" maxlength="200" required>
         <button type="button" class="poll-option-remove" title="Remove this option">&times;</button>

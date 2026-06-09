@@ -55,5 +55,17 @@
         renumber();
     });
 
+    // Drag-to-reorder via SortableJS. Drop handler re-runs renumber() so
+    // the option array indexes match the new visual order before submit.
+    if (window.Sortable) {
+        Sortable.create(list, {
+            handle: '.poll-drag-handle',
+            animation: 150,
+            ghostClass: 'poll-option-ghost',
+            chosenClass: 'poll-option-chosen',
+            onEnd: renumber,
+        });
+    }
+
     renumber();
 })();

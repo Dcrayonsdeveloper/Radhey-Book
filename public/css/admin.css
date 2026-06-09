@@ -1315,3 +1315,23 @@ select.form-control option {
     background: rgba(248, 113, 113, 0.22);
     color: #fff;
 }
+
+/* Drag handle for poll option rows */
+.poll-drag-handle {
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    user-select: none;
+    padding: 4px 6px;
+    flex-shrink: 0;
+}
+.poll-drag-handle:hover { color: #d4af37; }
+.poll-drag-handle:active { cursor: grabbing; }
+
+.poll-option-ghost {
+    opacity: 0.35;
+}
+.poll-option-chosen {
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.18);
+    transform: scale(1.005);
+}

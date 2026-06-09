@@ -17,5 +17,6 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <script src="{{ asset('js/admin-polls.js') }}?v={{ filemtime(public_path('js/admin-polls.js')) }}"></script>
 @endsection
