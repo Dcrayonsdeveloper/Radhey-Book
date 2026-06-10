@@ -39,3 +39,6 @@ Thumbs.db
 
 # Prod runtime uploads (live uploads dir on the server)
 /public/uploads/
+
+# Composer bootstrap binary (local installer only)
+/composer.phar
