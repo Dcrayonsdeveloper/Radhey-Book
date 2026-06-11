@@ -11,18 +11,21 @@
 @endphp
 
 {{-- HERO SECTION --}}
-<section class="hero-section" id="hero" style="background: url('{{ asset('images/all banner/ipl banner.png') }}') center/cover no-repeat;">
+<section class="hero-section" id="hero" style="background: url('{{ asset('images/all banner/t20 betting id.jpg') }}') center/cover no-repeat;">
     <div class="hero-overlay" style="background: rgba(0,0,0,0.55);"></div>
     <div class="hero-content container">
         <div class="hero-badge">
             <span class="badge-pulse"></span>
-            {!! $page->section('hero_badge', 'India\'s Most Trusted T20 Betting ID Provider') !!}
+            {!! $page->section('hero_badge', 'T20 World Cup 2026 Live') !!}
         </div>
-        <h1 class="hero-title">{!! $page->section('hero_title', 'Get Your <span class="text-gold">T20 Betting ID</span> Instantly on WhatsApp with Radhey Book') !!}</h1>
-        <p class="hero-subtitle">{!! $page->section('hero_subtitle', 'Radhey Book is the most trusted T20 betting ID provider in India. Get your T20 betting ID within minutes on WhatsApp and start betting on T20 World Cup, IPL and every T20 match with live odds and 24/7 support.') !!}</p>
+        <h1 class="hero-title">{!! $page->section('hero_title', 'Get Your <span class="text-gold">T20 Betting ID</span> Now') !!}</h1>
+        <p class="hero-subtitle">{!! $page->section('hero_subtitle', 'Live T20 odds, session betting, fancy markets &amp; more. Best odds guaranteed with instant withdrawals.') !!}</p>
         <div class="hero-cta">
             <a href="{{ $waLink }}" class="btn btn-gold btn-lg" target="_blank" rel="noopener">
-                {!! $page->section('hero_btn_text', 'Get Your T20 Betting ID Now') !!}
+                {!! $page->section('hero_btn_text', 'Get T20 Betting ID') !!}
+            </a>
+            <a href="#markets" class="btn btn-outline btn-lg">
+                {!! $page->section('hero_btn_secondary_text', 'Cricket Markets') !!}
             </a>
         </div>
     </div>
