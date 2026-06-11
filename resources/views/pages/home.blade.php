@@ -22,13 +22,13 @@
                 <div class="hero-slide-content container">
                     <div class="hero-badge">
                         <span class="badge-pulse"></span>
-                        {!! $page->section('hero_slide_2_badge', 'IPL 2026 Season Live') !!}
+                        {!! $page->section('hero_slide_2_badge', "T20 Women's World Cup 2026 Live") !!}
                     </div>
-                    <h2 class="hero-title">{!! $page->section('hero_slide_2_title', 'Get Your <span class="text-gold">IPL Betting ID</span> & Win Big!') !!}</h2>
-                    <p class="hero-subtitle">{!! $page->section('hero_slide_2_subtitle', 'Live IPL odds, session betting, fancy markets & more. Welcome Bonus on first deposit.') !!}</p>
+                    <h2 class="hero-title">{!! $page->section('hero_slide_2_title', 'Get Your <span class="text-gold">T20 Betting ID</span> Now') !!}</h2>
+                    <p class="hero-subtitle">{!! $page->section('hero_slide_2_subtitle', "Start Betting on T20 Women's World Cup 2026 Today. Get best odds with instant withdrawals, 24/7 customer support, and more!") !!}</p>
                     <div class="hero-cta">
-                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_2_btn1_text', 'Get IPL Betting ID')) }}</a>
-                        <a href="{!! $page->section('hero_slide_2_btn2_link', '/cricket-betting-id') !!}" class="btn btn-outline-gold btn-lg">{{ strip_tags($page->section('hero_slide_2_btn2_text', 'Cricket Markets')) }}</a>
+                        <a href="https://linktr.ee/radheybook" class="btn btn-gold btn-lg" target="_blank" rel="noopener">{{ strip_tags($page->section('hero_slide_2_btn1_text', 'Get T20 Betting ID')) }}</a>
+                        <a href="{!! $page->section('hero_slide_2_btn2_link', '/t20-betting-id') !!}" class="btn btn-outline-gold btn-lg">{{ strip_tags($page->section('hero_slide_2_btn2_text', 'Cricket Markets')) }}</a>
                     </div>
                 </div>
             </div>
