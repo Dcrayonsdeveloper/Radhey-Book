@@ -8,7 +8,7 @@
     {{-- Preload the active hero slide image to dramatically improve LCP.
          Without this the browser only discovers the URL after CSS parses,
          delaying first paint of the hero by hundreds of ms. --}}
-    <link rel="preload" as="image" href="{{ asset('images/all banner/ipl banner.webp') }}" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ asset('images/all banner/t20 betting id.jpg') }}" fetchpriority="high">
 @endpush
 
 @section('content')
@@ -17,7 +17,7 @@
 <section class="hero-section" id="hero">
     <div class="hero-carousel-wrapper">
         <div class="hero-slides">
-            <div class="hero-slide active" style="background: url('{{ asset('images/all banner/ipl banner.webp') }}') center/cover no-repeat;">
+            <div class="hero-slide active" style="background: url('{{ asset('images/all banner/t20 betting id.jpg') }}') center/cover no-repeat;">
                 <div class="hero-slide-overlay" style="background: rgba(0,0,0,0.5);"></div>
                 <div class="hero-slide-content container">
                     <div class="hero-badge">
