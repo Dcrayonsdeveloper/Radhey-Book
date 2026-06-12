@@ -179,7 +179,7 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/New folder/longfootball.webp') }}" alt="India's Trusted Online Football Betting ID Provider" width="736" height="1046" loading="lazy" decoding="async">
+                <img src="{{ asset('images/t20-cricket-betting-id.jpg') }}" alt="T20 Cricket Betting ID" width="736" height="1046" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="intro-content">
@@ -210,7 +210,7 @@
         </div>
         <div class="split-row image-right">
             <div class="split-media">
-                <img src="{{ asset('images/New folder/Artboard 3.jpg.jpeg') }}" alt="FIFA World Cup 2026 Football Betting" width="473" height="475" loading="lazy" decoding="async">
+                <img src="{{ asset('images/t20-cricket-betting-id-provider.jpg') }}" alt="T20 Cricket Betting ID Provider" width="473" height="475" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="why-2026-card">
@@ -240,7 +240,7 @@
         </div>
         <div class="split-row image-left">
             <div class="split-media">
-                <img src="{{ asset('images/New folder/Artboard 3 copy.jpg.jpeg') }}" alt="What is a Football Betting ID" width="473" height="475" loading="lazy" decoding="async">
+                <img src="{{ asset('images/cricket-betting-id.jpg') }}" alt="Cricket Betting ID" width="473" height="475" loading="lazy" decoding="async">
             </div>
             <div class="split-content">
                 <div class="what-is-content">
