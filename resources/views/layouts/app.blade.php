@@ -279,10 +279,7 @@
     </script>
     @endif
 
-    {{-- Welcome Popup removed 2026-06-09 in favor of the admin-managed
-         poll popup (see @include('partials.poll-modal') at end of body).
-         To re-enable the welcome bonus modal, uncomment the line below. --}}
-    {{-- @include('partials.welcome-popup') --}}
+    @include('partials.welcome-popup')
 
     {{-- Scroll to Top Button --}}
     <button id="scroll-to-top" aria-label="Scroll to top" style="position:fixed;bottom:100px;right:30px;width:45px;height:45px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#d4af37;border:2px solid #d4af37;border-radius:50%;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:998;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.3);" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -327,10 +324,11 @@
     {{-- Page-specific Scripts --}}
     @stack('scripts')
 
-    {{-- Poll popup (renders only when an active poll exists) --}}
-    @include('partials.poll-modal')
+    {{-- Poll popup disabled 2026-06-13 — welcome-popup restored above.
+         Admin poll management still works; re-enable by uncommenting below. --}}
+    {{-- @include('partials.poll-modal')
     @if (!empty($activePoll) && $activePoll->options->count() >= 2)
         <script src="{{ asset('js/poll-modal.js') }}?v={{ filemtime(public_path('js/poll-modal.js')) }}" defer></script>
-    @endif
+    @endif --}}
 </body>
 </html>
